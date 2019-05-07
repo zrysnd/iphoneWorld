@@ -14,6 +14,7 @@ namespace demo.iphoneWorld
     public interface Icarriable
     {
         void movedToNewFloor();//I'm not sure whether I should inject engineer or carrier to iphone class, or pass new floor by parameter.
+        //whichever is natural and SOLID
         void carriedBy(Object carrier);
     }
 
@@ -29,7 +30,7 @@ namespace demo.iphoneWorld
 
     public interface IfloorTellable
     {
-        void tellfloor();
+        void tellfloor(); //tell floor? use proper english
     }
     public interface Imovable
     {
@@ -52,13 +53,15 @@ namespace demo.iphoneWorld
 
     public interface Itable
     {
-        void drawTable();
+        void drawTable(); //draw to where? you have a frontend?
     }
 
     public interface Ibuilding
     {
-
+//?????????? anything?
     }
 
+    
+    //you have scattered interfaces, but they don't tell a story together. 
     
 }
