@@ -13,9 +13,10 @@ namespace demo.iphoneWorld
 
     public interface Icarriable
     {
-        void movedToNewFloor();//I'm not sure whether I should inject engineer or carrier to iphone class, or pass new floor by parameter.
-        //whichever is natural and SOLID
-        void carriedBy(Object carrier);
+        void movedToNewFloor();/* /*I'm not sure whether I should inject engineer or carrier to iphone class, 
+        or pass new floor by parameter.*/
+        //whichever is natural and SOLID */
+        void carriedBy(IfloorTellable carrier);
     }
 
     public interface Itestable: Icarriable
@@ -25,16 +26,17 @@ namespace demo.iphoneWorld
 
     public interface testItem: Itestable, Ibreakable
     {
-        //nothing
+        /*nothing*/
     }
 
     public interface IfloorTellable
     {
-        void tellfloor(); //tell floor? use proper english
+        int getCurrentFloor(); //tell floor? use proper english -> changed function name to "getCurrentFloor"
+        /* this interface's pis used to tell iphone objects their current floor number */
     }
     public interface Imovable
     {
-        void moveToNextBestFloor();//hopefully can get the floor number from DP table.
+        void moveToNextBestFloor();
 
     }
 
@@ -48,17 +50,18 @@ namespace demo.iphoneWorld
 
     public interface IalgoGeneratable
     {
-        void generateDPAlgo();
+        ItableAccessable generateDPTable(int numberOFPhones, int buildingHeight);
     }
 
-    public interface Itable
+    public interface ItableAccessable
     {
-        void drawTable(); //draw to where? you have a frontend?
+        int accessTable(int numberOfPhonesLeft, int buildingHeight); 
     }
 
     public interface Ibuilding
     {
-//?????????? anything?
+        //?????????? anything?  //-> added getHeight()
+        int getHeight();
     }
 
     
