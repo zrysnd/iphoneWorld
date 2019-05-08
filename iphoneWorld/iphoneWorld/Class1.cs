@@ -26,15 +26,15 @@ namespace demo.iphoneWorld
         ItableAccessable DPTable;/*this table contains information which tells the engineer at which floor to start the test*/
         public ItableAccessable generateDPTable(int numberOFPhones, int buildingHeight) 
         { 
-            //code generating the table..
-            return DPTable; 
-        } //and where is the algorithm if you don't return it?
+            /*code generating the table..*/
+            return DPTable;
+        } //and where is the algorithm if you don't return it? -> returning a DPTable now, algorithm will be implemented as a funtion returning a DPTable
     }
 
     public class Engineer: Tester
     {
         List<Itestable> listOfIphone; 
-        //why comment out -> uncommeted.
+        //why comment out -> uncommented the list.
         int currentFloor;
         ItableAccessable DPTable;
         public int getCurrentFloor() { return currentFloor; }
