@@ -9,13 +9,12 @@ namespace iphoneWorld.iphoneWorld
         private readonly int _numOfPhones;
         private readonly int _buildingHeight;
 
-        public DPAlgorithmGenerator(int numberOfIphones, Ibuilding building)
+        public DPAlgorithmGenerator(int numberOfIphones, Ibuilding building, IDPTable aDpTable)
         {
-            /*_maxNumberOfTestsNeeded[0][0] stands for when 1 phone left,building has 1 floor */
             _numOfPhones = numberOfIphones;
             _buildingHeight = building.getHeight();
             _maxNumberOfTestsNeeded = new int[_numOfPhones + 1, _buildingHeight + 1];
-            DPTable aDpTable = new DPTable(numberOfIphones, building);/*inject? but have parameters*/
+            //DPTable aDpTable = new DPTable(numberOfIphones, building);/*inject? but have parameters*/
             _wirteonlyDPTable = aDpTable;
             _readonlyDPtable = aDpTable;
 

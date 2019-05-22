@@ -1,17 +1,17 @@
 ﻿<Properties StartupConfiguration="{39C76857-4CAD-45F6-BA7F-CD044B99EFC7}|Default">
   <MonoDevelop.Ide.ItemProperties.iphoneWorld PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="iphoneWorld/iphoneWorld/UnitTests/IphoneWorldTestClass.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="iphoneWorld/iphoneWorld/World.cs">
     <Files>
       <File FileName="iphoneWorld/iphoneWorld/Class1.cs" Line="18" Column="1" />
       <File FileName="iphoneWorld/iphoneWorld/Iphone.cs" Line="39" Column="26" />
       <File FileName="iphoneWorld/iphoneWorld/Interface1.cs" Line="18" Column="6" />
-      <File FileName="iphoneWorld/iphoneWorld/Engineer.cs" Line="31" Column="31" />
-      <File FileName="iphoneWorld/Program.cs" Line="28" Column="38" />
-      <File FileName="iphoneWorld/iphoneWorld/World.cs" Line="11" Column="1" />
-      <File FileName="iphoneWorld/iphoneWorld/UnitTests/IphoneWorldTestClass.cs" Line="15" Column="1" />
-      <File FileName="iphoneWorld/iphoneWorld/IphoneWorldInstaller.cs" Line="12" Column="10" />
-      <File FileName="iphoneWorld/iphoneWorld/DPTable.cs" Line="6" Column="31" />
-      <File FileName="iphoneWorld/iphoneWorld/DPAlgorithmGenerator.cs" Line="18" Column="100" />
+      <File FileName="iphoneWorld/iphoneWorld/Engineer.cs" Line="55" Column="11" />
+      <File FileName="iphoneWorld/Program.cs" Line="35" Column="14" />
+      <File FileName="iphoneWorld/iphoneWorld/IphoneWorldInstaller.cs" Line="16" Column="71" />
+      <File FileName="iphoneWorld/iphoneWorld/UnitTests/IphoneWorldTestClass.cs" Line="8" Column="53" />
+      <File FileName="iphoneWorld/iphoneWorld/DPAlgorithmGenerator.cs" Line="22" Column="10" />
+      <File FileName="iphoneWorld/iphoneWorld/DPTable.cs" Line="15" Column="64" />
+      <File FileName="iphoneWorld/iphoneWorld/World.cs" Line="35" Column="14" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -20,9 +20,8 @@
             <Node name="iphoneWorld" expanded="True">
               <Node name="References" expanded="True" />
               <Node name="iphoneWorld" expanded="True">
-                <Node name="UnitTests" expanded="True">
-                  <Node name="IphoneWorldTestClass.cs" selected="True" />
-                </Node>
+                <Node name="UnitTests" expanded="True" />
+                <Node name="World.cs" selected="True" />
               </Node>
             </Node>
           </Node>

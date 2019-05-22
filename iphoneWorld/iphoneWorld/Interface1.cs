@@ -31,7 +31,7 @@ namespace iphoneWorld.iphoneWorld
     }
     public interface Tester
     {
-        void test();
+        int test();
     }
     
 
@@ -51,7 +51,10 @@ namespace iphoneWorld.iphoneWorld
     {
         void writeToTable(int numberOfPhonesLeft, int currentFloor, int bestFloorToTest);
     }
+    public interface IDPTable: ItableWritable, ItableAccessable
+    {
 
+    }
 
 
     public interface Ibuilding

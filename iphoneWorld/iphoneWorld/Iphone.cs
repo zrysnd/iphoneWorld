@@ -3,7 +3,9 @@ namespace iphoneWorld.iphoneWorld
 {
     public class Iphone : Itestable
     {
+
         private bool _broken;
+
         private int _breakingFloor; //why would a phone know the max floor, max of what -> changed name, this floor is where the iphone breaks.
                                     /* I might misunderstood the project, should we decide at which floor the iphone breaks at first,
                                      or when we do tests, the program randomly decide whether the phone breaks, and based on the results

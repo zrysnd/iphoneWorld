@@ -1,17 +1,12 @@
 ﻿using System;
-using Zenject;
 using System.Collections.Generic;
 
 
 namespace iphoneWorld.iphoneWorld
 {
-    public class Engineer : UnitTestBase, Tester, IfloorTellable
+    public class Engineer : Tester, IfloorTellable
     {
-        protected override void SetInstallers()
-        {
-            installers.Add(new IphoneWorldInstaller());
 
-        }
 
         /*having a list of phones might not be necessary, just for simulation purpose */
         private List<Itestable> _listOfIphone;
@@ -25,7 +20,7 @@ namespace iphoneWorld.iphoneWorld
         private IalgoGeneratable _DPalgo;
         private Ibuilding _building;
 
-        public Engineer(Ibuilding building, int breakingFloor,
+        public Engineer(Ibuilding building,
              List<Itestable> listOfPhone, IalgoGeneratable DPAlgoG)
         {
             _currentFloor = 0;
@@ -113,7 +108,7 @@ namespace iphoneWorld.iphoneWorld
 
         }
 
-        public void test()
+        public int test()
         {
             while(_highestBrokenFloor != _numOfFloorsBelowThisSubBuilding + 1)
             {
@@ -123,20 +118,9 @@ namespace iphoneWorld.iphoneWorld
             Console.WriteLine("breaking floor is: " + _numOfFloorsBelowThisSubBuilding);
             Console.WriteLine("_______________________________");
             Console.WriteLine();
+            return _numOfFloorsBelowThisSubBuilding;
         }
 
-        public int linearTest()
-        {
-            int lastFloor = 0;
-            while (!_listOfIphone[0].isBroken())
-            {
-                lastFloor = this._currentFloor;
-                this.moveToNextFloor();
-                _IphoneBeingTested.getTested();
-
-            }
-            return lastFloor;
-        }
 
 
     }

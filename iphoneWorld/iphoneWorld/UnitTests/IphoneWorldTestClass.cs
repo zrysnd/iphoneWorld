@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using System;
+using System.Collections.Generic;
 using Zenject;
 namespace iphoneWorld.iphoneWorld.UnitTests
 
@@ -16,61 +17,67 @@ namespace iphoneWorld.iphoneWorld.UnitTests
 
         [Inject]
         Ibuilding bInjected;
-
-        //[Test()]
-        //public void LinearTest_TestCase()
-        //{
-        //    //Building b = new Building(100);
-        //    Engineer e = new Engineer(3, bInjected, 3);
-        //    int breaking = e.linearTest();
-        //    Assert.AreEqual(3, breaking);
-
-        //}
+        [Inject]
+        IDPTable _table;
+        [Inject]
+        DPAlgorithmGenerator _dpAlgo;
+        [Inject]
+        World world;
+  
 
         [Test()]
         public void DpALgoTestCase()
-        {
-            DPAlgorithmGenerator dpAlgo = new DPAlgorithmGenerator(3, bInjected);
-            Assert.AreEqual(100, dpAlgo.getBuildingHeight() );
-            Assert.AreEqual(3, dpAlgo.getNumberOfPhones() );
+        {   
+            //_table = new DPTable(3, bInjected);
+            //DPAlgorithmGenerator dpAlgo = new DPAlgorithmGenerator(3, bInjected, _table);
+            Assert.AreEqual(1000, _dpAlgo.getBuildingHeight() );
+            Assert.AreEqual(3, _dpAlgo.getNumberOfPhones() );
 
-            dpAlgo.generateDPTable();
-            Assert.AreEqual(14, dpAlgo.AccessMaxNumberOfTestsNeeded(2, 100));
-            Assert.AreEqual(9, dpAlgo.AccessMaxNumberOfTestsNeeded(3, 100));
-            Assert.AreEqual(4, dpAlgo.AccessMaxNumberOfTestsNeeded(2, 10));
-            Assert.AreEqual(10, dpAlgo.AccessMaxNumberOfTestsNeeded(1, 10));
+            _dpAlgo.generateDPTable();
+            Assert.AreEqual(14, _dpAlgo.AccessMaxNumberOfTestsNeeded(2, 100));
+            Assert.AreEqual(9, _dpAlgo.AccessMaxNumberOfTestsNeeded(3, 100));
+            Assert.AreEqual(4, _dpAlgo.AccessMaxNumberOfTestsNeeded(2, 10));
+            Assert.AreEqual(10, _dpAlgo.AccessMaxNumberOfTestsNeeded(1, 10));
 
         }
 
-        //[Test]
-        //public void DpTableTestCase()
-        //{
+        [Test]
+        public void DpTableTestCase()
+        {
 
-        //    Building b = new Building(10);/*height is 10 not 100, didn't inject*/
-        //    DPAlgorithmGenerator dpAlgo = new DPAlgorithmGenerator(3, b);
-        //    ItableAccessable aDpTable = dpAlgo.generateDPTable();
-        //    Assert.AreEqual(1, aDpTable.accessTable(1, 10));
+            Building b = new Building(10);/*height is 10 not 1000, didn't use inject*/
+            IDPTable table = new DPTable(3, b);
+            DPAlgorithmGenerator dpAlgo = new DPAlgorithmGenerator(3, b, table);
+            ItableAccessable aDpTable = dpAlgo.generateDPTable();
+            Assert.AreEqual(1, aDpTable.accessTable(1, 10));
 
-        //    //this is onw possible worst case, 4 tests, breaking at 10 or higher than 10.
-        //    Assert.AreEqual(4, aDpTable.accessTable(2, 10));
-        //    //didn't break at floor 4-> go to floor 7
-        //    Assert.AreEqual(3, aDpTable.accessTable(2, 6));
-        //    //didn't break at floor 4, didn't break at floor 7-> go to floor 9
-        //    Assert.AreEqual(2, aDpTable.accessTable(2, 3));
-        //    //didn't break at floor 4, didn't break at floor 7, didn't break at floor9, go to floor 10
-        //    Assert.AreEqual(1, aDpTable.accessTable(2, 1));
+            //this is onw possible worst case, 4 tests, breaking at 10 or higher than 10.
+            Assert.AreEqual(4, aDpTable.accessTable(2, 10));
+            //didn't break at floor 4-> go to floor 7
+            Assert.AreEqual(3, aDpTable.accessTable(2, 6));
+            //didn't break at floor 4, didn't break at floor 7-> go to floor 9
+            Assert.AreEqual(2, aDpTable.accessTable(2, 3));
+            //didn't break at floor 4, didn't break at floor 7, didn't break at floor9, go to floor 10
+            Assert.AreEqual(1, aDpTable.accessTable(2, 1));
 
 
-        //    //broke at floor 4 -> go to floor 1
-        //    Assert.AreEqual(1, aDpTable.accessTable(1, 3));
+            //broke at floor 4 -> go to floor 1
+            Assert.AreEqual(1, aDpTable.accessTable(1, 3));
 
-        //    //Assert.AreEqual(1, aDpTable.accessTable(2, 1));
+            Assert.AreEqual(1, aDpTable.accessTable(2, 1));
 
-        //    Engineer e = new Engineer(2, b, 3);
+        }
 
-        //    e.moveToNextBestFloor();
-        //    Assert.AreEqual(4, e.getCurrentFloor() );
-        //}
+
+
+        [Test]
+        public void WorldTestCase()
+        {
+            world = new World();
+            int breaking = world.MakeEngineerTest();
+            Assert.AreEqual(500, breaking);
+        }
+
 
 
     }

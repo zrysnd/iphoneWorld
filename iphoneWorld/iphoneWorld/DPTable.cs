@@ -1,7 +1,7 @@
 ﻿using System;
 namespace iphoneWorld.iphoneWorld
 {
-    public class DPTable : ItableAccessable, ItableWritable
+    public class DPTable : IDPTable
     {
         private int[,] _table;
 
