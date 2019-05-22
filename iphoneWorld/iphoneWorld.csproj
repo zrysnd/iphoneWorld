@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Project DefaultTargets="Build" ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\NUnit.3.12.0\build\NUnit.props" Condition="Exists('..\packages\NUnit.3.12.0\build\NUnit.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
@@ -30,15 +31,36 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
+    <Reference Include="nunit.framework">
+      <HintPath>..\packages\NUnit.3.12.0\lib\net45\nunit.framework.dll</HintPath>
+    </Reference>
+    <Reference Include="Zenject">
+      <HintPath>..\..\..\Downloads\study\spring2019\Ampligence\Zenject.dll</HintPath>
+    </Reference>
+    <Reference Include="Zenject-tests">
+      <HintPath>..\..\..\Downloads\study\spring2019\Ampligence\Zenject-tests.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="iphoneWorld\Class1.cs" />
     <Compile Include="iphoneWorld\Interface1.cs" />
+    <Compile Include="iphoneWorld\Engineer.cs" />
+    <Compile Include="iphoneWorld\Iphone.cs" />
+    <Compile Include="iphoneWorld\DPAlgorithmGenerator.cs" />
+    <Compile Include="iphoneWorld\UnitTests\IphoneWorldTestClass.cs" />
+    <Compile Include="iphoneWorld\DPTable.cs" />
+    <Compile Include="iphoneWorld\UnitTests\BindingInstaller.cs" />
+    <Compile Include="iphoneWorld\UnitTests\UnitTestBase.cs" />
+    <Compile Include="iphoneWorld\IphoneWorldInstaller.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="iphoneWorld\" />
+    <Folder Include="iphoneWorld\UnitTests\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
 </Project>

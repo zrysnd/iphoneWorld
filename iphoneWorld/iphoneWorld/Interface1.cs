@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace demo.iphoneWorld
+namespace iphoneWorld.iphoneWorld
 {
     public interface Ibreakable
     {
@@ -13,7 +13,7 @@ namespace demo.iphoneWorld
 
     public interface Icarriable
     {
-        void movedToNewFloor();/* /*I'm not sure whether I should inject engineer or carrier to iphone class, 
+        void updateCurrentFloor();/* /*I'm not sure whether I should inject engineer or carrier to iphone class, 
         or pass new floor by parameter.*/
         //whichever is natural and SOLID */
         void carriedBy(IfloorTellable carrier);
@@ -22,6 +22,7 @@ namespace demo.iphoneWorld
     public interface Itestable: Icarriable
     {
         void getTested();
+        bool isBroken();
     }
 
     public interface testItem: Itestable, Ibreakable
@@ -50,12 +51,18 @@ namespace demo.iphoneWorld
 
     public interface IalgoGeneratable
     {
-        ItableAccessable generateDPTable(int numberOFPhones, int buildingHeight);
+        ItableAccessable generateDPTable();
     }
+
 
     public interface ItableAccessable
     {
         int accessTable(int numberOfPhonesLeft, int buildingHeight); 
+    }
+
+    public interface ItableWritable
+    {
+        void writeToTable(int numberOfPhonesLeft, int currentFloor, int bestFloorToTest);
     }
 
     public interface Ibuilding

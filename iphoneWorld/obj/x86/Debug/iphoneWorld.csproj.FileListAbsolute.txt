@@ -1,0 +1,12 @@
+/Users/zrysnd/Projects/iphoneWorld/iphoneWorld/obj/x86/Debug/iphoneWorld.csprojAssemblyReference.cache
+/Users/zrysnd/Projects/iphoneWorld/iphoneWorld/obj/x86/Debug/iphoneWorld.csproj.CoreCompileInputs.cache
+/Users/zrysnd/Projects/iphoneWorld/iphoneWorld/bin/Debug/iphoneWorld.exe
+/Users/zrysnd/Projects/iphoneWorld/iphoneWorld/bin/Debug/iphoneWorld.pdb
+/Users/zrysnd/Projects/iphoneWorld/iphoneWorld/bin/Debug/nunit.framework.dll
+/Users/zrysnd/Projects/iphoneWorld/iphoneWorld/bin/Debug/nunit.framework.pdb
+/Users/zrysnd/Projects/iphoneWorld/iphoneWorld/bin/Debug/nunit.framework.xml
+/Users/zrysnd/Projects/iphoneWorld/iphoneWorld/obj/x86/Debug/iphoneWorld.csproj.CopyComplete
+/Users/zrysnd/Projects/iphoneWorld/iphoneWorld/obj/x86/Debug/iphoneWorld.exe
+/Users/zrysnd/Projects/iphoneWorld/iphoneWorld/obj/x86/Debug/iphoneWorld.pdb
+/Users/zrysnd/Projects/iphoneWorld/iphoneWorld/bin/Debug/Zenject-tests.dll
+/Users/zrysnd/Projects/iphoneWorld/iphoneWorld/bin/Debug/Zenject.dll
