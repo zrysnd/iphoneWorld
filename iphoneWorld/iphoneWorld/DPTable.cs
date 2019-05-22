@@ -3,7 +3,7 @@ namespace iphoneWorld.iphoneWorld
 {
     public class DPTable : ItableAccessable, ItableWritable
     {
-        int[,] _table;
+        private int[,] _table;
 
         public DPTable(int numberOfIphones, Ibuilding building)
         {

@@ -1,15 +1,15 @@
 ﻿using System;
 namespace iphoneWorld.iphoneWorld
 {
-    public class Iphone : testItem
+    public class Iphone : Itestable
     {
-        bool _broken;
-        int _breakingFloor; //why would a phone know the max floor, max of what -> changed name, this floor is where the iphone breaks.
-                           /* I might misunderstood the project, should we decide at which floor the iphone breaks at first,
-                            or when we do tests, the program randomly decide whether the phone breaks, and based on the results
-                            we tell at which floor the iphones break?  */
-        int _currentFloor; //makes sense to be at current floor
-        IfloorTellable _carrier;
+        private bool _broken;
+        private int _breakingFloor; //why would a phone know the max floor, max of what -> changed name, this floor is where the iphone breaks.
+                                    /* I might misunderstood the project, should we decide at which floor the iphone breaks at first,
+                                     or when we do tests, the program randomly decide whether the phone breaks, and based on the results
+                                     we tell at which floor the iphones break?  */
+        private int _currentFloor; //makes sense to be at current floor
+        private IfloorTellable _carrier;
 
         public Iphone(int breakingFloor, IfloorTellable carrier)
         {
@@ -19,10 +19,6 @@ namespace iphoneWorld.iphoneWorld
             _currentFloor = carrier.getCurrentFloor();
         }
 
-        public void breakNow()
-        {
-            _broken = true;
-        }
         public bool isBroken()
         {
             return _broken;

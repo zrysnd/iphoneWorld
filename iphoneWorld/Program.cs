@@ -14,18 +14,17 @@ namespace iphoneWorld
 
         }
 
-        //[Inject] Ibuilding b2;
-
+        /*it seems that it's hard use inject for main function, main function is static*/
         public static void Main(string[] args)
         {
 
 
-            //Ibuilding b = new Building(10);
-            //Tester e = new Engineer(2, b, 4);
-            //e.test();
+            Ibuilding b = new Building(10);
+            Tester e = new Engineer(2, b, 4);
+            e.test();
 
-            Ibuilding b2 = new Building(100);
-            Tester e2 = new Engineer(4, b2, 99);
+            Ibuilding b2 = new Building(1000);
+            Tester e2 = new Engineer(100, b2, 699);
             e2.test();
 
 

@@ -15,10 +15,6 @@ namespace iphoneWorld.iphoneWorld
     public class Building : Ibuilding
     {
         int _height;
-        //public Building()
-        //{
-        //    _height = 100;
-        //}
 
         public Building(int height)
         {

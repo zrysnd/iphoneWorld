@@ -15,7 +15,7 @@ namespace iphoneWorld.iphoneWorld
             _numOfPhones = numberOfIphones;
             _buildingHeight = building.getHeight();
             _maxNumberOfTestsNeeded = new int[_numOfPhones + 1, _buildingHeight + 1];
-            DPTable aDpTable = new DPTable(numberOfIphones, building);/**/
+            DPTable aDpTable = new DPTable(numberOfIphones, building);/*inject? but have parameters*/
             _wirteonlyDPTable = aDpTable;
             _readonlyDPtable = aDpTable;
 
@@ -71,7 +71,7 @@ namespace iphoneWorld.iphoneWorld
 
 
             return _readonlyDPtable;
-        } //and where is the algorithm if you don't return it? 
+        } //and where is the algorithm if you don't return it? -> I'm returning a table.
 
         public int AccessMaxNumberOfTestsNeeded(int i, int j)
         {

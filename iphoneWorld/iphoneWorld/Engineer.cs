@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 namespace iphoneWorld.iphoneWorld
 {
-    public class Engineer : UnitTestBase, Tester
+    public class Engineer : UnitTestBase, Tester, IfloorTellable
     {
         protected override void SetInstallers()
         {
@@ -13,17 +13,17 @@ namespace iphoneWorld.iphoneWorld
 
         }
 
-        List<Itestable> _listOfIphone;
-        Itestable _IphoneBeingTested;
-        int _IphoneBeingTestedIndex;
-        int _highestBrokenFloor;
-        //why comment out -> uncommented the list.
-        int _currentFloor;
-        int _numOfFloorsBelowThisSubBuilding;
-        bool _lastPhoneBroke;
-        ItableAccessable _DPTable;
-        IalgoGeneratable _DPalgo;
-        Ibuilding _building;
+        /*having a list of phones might not be necessary, just for simulation purpose */
+        private List<Itestable> _listOfIphone;
+        private Itestable _IphoneBeingTested;
+        private int _IphoneBeingTestedIndex;
+        private int _highestBrokenFloor;
+        private int _currentFloor;
+        private int _numOfFloorsBelowThisSubBuilding;
+        private bool _lastPhoneBroke;
+        private ItableAccessable _DPTable;
+        private IalgoGeneratable _DPalgo;
+        private Ibuilding _building;
 
         public Engineer(int numberOFPhones, Ibuilding building, int breakingFloor)
         {
@@ -72,8 +72,6 @@ namespace iphoneWorld.iphoneWorld
             else
                 heightOfThisSubBuilding = _highestBrokenFloor - 1 - _currentFloor;
 
-            //Console.WriteLine("heightOfThisSubBuilding: " + heightOfThisSubBuilding);
-
             int nextBestFloorInSubBuilding = _DPTable.accessTable(numOfPhonesLeftNow, heightOfThisSubBuilding);
             _currentFloor = _numOfFloorsBelowThisSubBuilding + nextBestFloorInSubBuilding;
             for (int i = 0; i <= _listOfIphone.Count - 1; i++)
@@ -84,12 +82,10 @@ namespace iphoneWorld.iphoneWorld
 
         }
 
-        /* requires _IphoneBeingTestedIndex <=..
-         */
+
         public void testOnePhone()
         {
-            //while(_highestBrokenFloor != _numOfFloorsBelowThisSubBuilding + 1)
-            //{
+
                 this.moveToNextBestFloor();
                 _IphoneBeingTested.getTested();
 
@@ -99,29 +95,18 @@ namespace iphoneWorld.iphoneWorld
                     _lastPhoneBroke = true;
                     _IphoneBeingTestedIndex++;
                     _highestBrokenFloor = _currentFloor;
-                    //Console.WriteLine("number of Iphones: " + _listOfIphone.Count);
-                    //Console.WriteLine("which is the current phone: " + _IphoneBeingTestedIndex);
                     if (_highestBrokenFloor == _numOfFloorsBelowThisSubBuilding + 1)
                         return;
-                //if (_IphoneBeingTestedIndex >= _listOfIphone.Count)
-                        //return false;
                     _IphoneBeingTested = _listOfIphone[_IphoneBeingTestedIndex];
 
-                    
-                    //return true;
                 }
                 else
                 {
                     _lastPhoneBroke = false;
                     Console.WriteLine("Iphone didn't break at floor " + _currentFloor);
-                    /* need to change _numOfFloorsBelowThisSubBuilding*/
                     _numOfFloorsBelowThisSubBuilding = _currentFloor;
                 }
 
-                //return true;
-                //Console.WriteLine("_numOfFloorsBelowThisSubBuilding: " + _numOfFloorsBelowThisSubBuilding);
-                
-            //}
 
         }
 

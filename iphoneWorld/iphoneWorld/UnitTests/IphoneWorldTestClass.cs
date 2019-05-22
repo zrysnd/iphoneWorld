@@ -45,7 +45,8 @@ namespace iphoneWorld.iphoneWorld.UnitTests
         [Test]
         public void DpTableTestCase()
         {
-            Building b = new Building(10);
+
+            Building b = new Building(10);/*height is 10 not 100, didn't inject*/
             DPAlgorithmGenerator dpAlgo = new DPAlgorithmGenerator(3, b);
             ItableAccessable aDpTable = dpAlgo.generateDPTable();
             Assert.AreEqual(1, aDpTable.accessTable(1, 10));
