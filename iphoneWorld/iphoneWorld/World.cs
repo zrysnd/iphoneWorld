@@ -12,8 +12,7 @@ namespace iphoneWorld.iphoneWorld
         //    installers.Add(new IphoneWorldInstaller());
 
         //}
-        //[Inject]
-        int _numOfPhones;
+
         //[Inject]
         Ibuilding _building;
         //[Inject]
@@ -23,20 +22,24 @@ namespace iphoneWorld.iphoneWorld
         Itestable _iphone;
 
         Tester _engineer;
+        //[Inject]
+        int _numOfPhones;
         int _breakingFloor;
+        int _buildingHeight;
 
 
         public World()
         {
             _breakingFloor = 500;
             _numOfPhones = 100;
+            _buildingHeight = 1000;
             List<Itestable> phoneList = new List<Itestable>();
             for (int i = 0; i <= _numOfPhones - 1; i++)
             {   
                 _iphone = new Iphone(_breakingFloor);
                 phoneList.Add(_iphone);
             }
-            _building = new Building(1000);
+            _building = new Building(_buildingHeight);
             _dpTable = new DPTable(_numOfPhones, _building);
             _algoG = new DPAlgorithmGenerator(_numOfPhones, _building, _dpTable);
             _engineer = new Engineer(_building, phoneList, _algoG);
@@ -44,6 +47,11 @@ namespace iphoneWorld.iphoneWorld
         public int MakeEngineerTest()
         {
             return _engineer.test();
+        }
+
+        public int getBreakingFloor()
+        {
+            return _breakingFloor;
         }
     }
 }

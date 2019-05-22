@@ -44,7 +44,7 @@
   <ItemGroup>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="iphoneWorld\Class1.cs" />
+    <Compile Include="iphoneWorld\Building.cs" />
     <Compile Include="iphoneWorld\Interface1.cs" />
     <Compile Include="iphoneWorld\Engineer.cs" />
     <Compile Include="iphoneWorld\Iphone.cs" />

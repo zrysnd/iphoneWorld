@@ -44,11 +44,9 @@ namespace iphoneWorld.iphoneWorld.UnitTests
         [Test]
         public void DpTableTestCase()
         {
+       
+            ItableAccessable aDpTable = _dpAlgo.generateDPTable();
 
-            Building b = new Building(10);/*height is 10 not 1000, didn't use inject*/
-            IDPTable table = new DPTable(3, b);
-            DPAlgorithmGenerator dpAlgo = new DPAlgorithmGenerator(3, b, table);
-            ItableAccessable aDpTable = dpAlgo.generateDPTable();
             Assert.AreEqual(1, aDpTable.accessTable(1, 10));
 
             //this is onw possible worst case, 4 tests, breaking at 10 or higher than 10.
@@ -73,9 +71,9 @@ namespace iphoneWorld.iphoneWorld.UnitTests
         [Test]
         public void WorldTestCase()
         {
-            world = new World();
+            //world = new World();
             int breaking = world.MakeEngineerTest();
-            Assert.AreEqual(500, breaking);
+            Assert.AreEqual(world.getBreakingFloor(), breaking);/**/
         }
 
 

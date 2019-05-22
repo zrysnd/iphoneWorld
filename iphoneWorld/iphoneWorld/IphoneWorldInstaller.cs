@@ -18,11 +18,4 @@ namespace iphoneWorld.iphoneWorld
         }
     }
 
-    public class IphoneInstaller : BindingInstaller
-    {
-        public override void Bind()
-        {
-            Container.Bind<int>().FromInstance(500);
-        }
-    }
 }
