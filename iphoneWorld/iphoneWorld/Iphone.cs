@@ -11,10 +11,15 @@ namespace iphoneWorld.iphoneWorld
         private int _currentFloor; //makes sense to be at current floor
         private IfloorTellable _carrier;
 
-        public Iphone(int breakingFloor, IfloorTellable carrier)
+        public Iphone(int breakingFloor)
         {
             _broken = false;
             _breakingFloor = breakingFloor;
+            _currentFloor = 0;
+        }
+
+        public void  carriedBy(IfloorTellable carrier)
+        {
             _carrier = carrier;
             _currentFloor = carrier.getCurrentFloor();
         }

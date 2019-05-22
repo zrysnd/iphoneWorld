@@ -25,7 +25,8 @@ namespace iphoneWorld.iphoneWorld
         private IalgoGeneratable _DPalgo;
         private Ibuilding _building;
 
-        public Engineer(int numberOFPhones, Ibuilding building, int breakingFloor)
+        public Engineer(Ibuilding building, int breakingFloor,
+             List<Itestable> listOfPhone, IalgoGeneratable DPAlgoG)
         {
             _currentFloor = 0;
             _numOfFloorsBelowThisSubBuilding = 0;
@@ -33,17 +34,19 @@ namespace iphoneWorld.iphoneWorld
             _lastPhoneBroke = false;
 
 
-            _listOfIphone = new List<Itestable>();
-            for (int i = 0; i <= numberOFPhones - 1; i++)
+            //_listOfIphone = new List<Itestable>();
+            _listOfIphone = listOfPhone;
+            for (int i = 0; i <= _listOfIphone.Count - 1; i++)
             {
-                Iphone thisIphone = new Iphone(breakingFloor, this);
-                _listOfIphone.Add(thisIphone);
+                _listOfIphone[i].carriedBy(this);
             }
+
             _IphoneBeingTestedIndex = 0;
             _IphoneBeingTested = _listOfIphone[_IphoneBeingTestedIndex];
 
             _building = building;
-            _DPalgo = new DPAlgorithmGenerator(numberOFPhones, building);
+            //_DPalgo = new DPAlgorithmGenerator(numberOFPhones, building);
+            _DPalgo = DPAlgoG;
             _DPTable = _DPalgo.generateDPTable();
 
         }
