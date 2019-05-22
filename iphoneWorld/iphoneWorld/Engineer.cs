@@ -1,11 +1,18 @@
 ﻿using System;
+using Zenject;
 using System.Collections.Generic;
 
 
 namespace iphoneWorld.iphoneWorld
 {
-    public class Engineer : Tester
+    public class Engineer : UnitTestBase, Tester
     {
+        protected override void SetInstallers()
+        {
+            installers.Add(new IphoneWorldInstaller());
+
+        }
+
         List<Itestable> _listOfIphone;
         Itestable _IphoneBeingTested;
         int _IphoneBeingTestedIndex;
@@ -16,7 +23,6 @@ namespace iphoneWorld.iphoneWorld
         bool _lastPhoneBroke;
         ItableAccessable _DPTable;
         IalgoGeneratable _DPalgo;
-
         Ibuilding _building;
 
         public Engineer(int numberOFPhones, Ibuilding building, int breakingFloor)

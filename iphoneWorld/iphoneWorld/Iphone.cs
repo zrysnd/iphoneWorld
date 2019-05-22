@@ -37,9 +37,5 @@ namespace iphoneWorld.iphoneWorld
         {
             _currentFloor = _carrier.getCurrentFloor();
         }
-        public void carriedBy(IfloorTellable carrier)
-        {
-            _carrier = carrier;
-        }
     }
 }

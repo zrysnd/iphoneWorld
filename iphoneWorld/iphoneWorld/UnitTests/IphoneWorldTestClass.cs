@@ -30,7 +30,6 @@ namespace iphoneWorld.iphoneWorld.UnitTests
         [Test()]
         public void DpALgoTestCase()
         {
-            //Building b = new Building(100);
             DPAlgorithmGenerator dpAlgo = new DPAlgorithmGenerator(3, bInjected);
             Assert.AreEqual(100, dpAlgo.getBuildingHeight() );
             Assert.AreEqual(3, dpAlgo.getNumberOfPhones() );

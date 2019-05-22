@@ -16,7 +16,7 @@ namespace iphoneWorld.iphoneWorld
         void updateCurrentFloor();/* /*I'm not sure whether I should inject engineer or carrier to iphone class, 
         or pass new floor by parameter.*/
         //whichever is natural and SOLID */
-        void carriedBy(IfloorTellable carrier);
+      
     }
 
     public interface Itestable: Icarriable
