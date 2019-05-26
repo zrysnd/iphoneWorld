@@ -1,12 +1,17 @@
 ﻿using System;
+using Zenject;
 using System.Collections.Generic;
 
 
 namespace iphoneWorld.iphoneWorld
 {
-    public class Engineer : Tester, IfloorTellable
+    public class Engineer : UnitTestBase , Tester, IfloorTellable
     {
+        protected override void SetInstallers()
+        {
+            installers.Add(new EngineerInstaller());
 
+        }
 
         /*having a list of phones might not be necessary, just for simulation purpose */
         private List<Itestable> _listOfIphone;
@@ -17,6 +22,7 @@ namespace iphoneWorld.iphoneWorld
         private int _numOfFloorsBelowThisSubBuilding;
         private bool _lastPhoneBroke;
         private ItableAccessable _DPTable;
+        [Inject]
         private IalgoGeneratable _DPalgo;
         private Ibuilding _building;
 

@@ -3,7 +3,7 @@ using Zenject;
 namespace iphoneWorld.iphoneWorld
 
 {
-    public class IphoneWorldInstaller: BindingInstaller
+    public class UnitTestInstaller: BindingInstaller
     {
         public override void Bind()
         {
@@ -15,6 +15,20 @@ namespace iphoneWorld.iphoneWorld
             ContainerBindInterfaceTo<Itestable, Iphone>(false);
             ContainerBindInterfaceTo<Tester, Engineer>(false);
             ContainerBindInterfaceTo<World, World>(true);
+        }
+
+
+    }
+
+    public class EngineerInstaller : BindingInstaller
+    {
+        public override void Bind()
+        {
+            Container.Bind<Ibuilding>().FromInstance(new Building(1000));
+            Container.Bind<int>().FromInstance(100);
+            ContainerBindInterfaceTo<DPAlgorithmGenerator, DPAlgorithmGenerator>(false);
+            ContainerBindInterfaceTo<IDPTable, DPTable>(false);
+
         }
     }
 

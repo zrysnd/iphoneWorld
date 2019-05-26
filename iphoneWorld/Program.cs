@@ -11,7 +11,7 @@ namespace iphoneWorld
     {
         protected override void SetInstallers()
         {
-            installers.Add(new IphoneWorldInstaller());
+            installers.Add(new UnitTestInstaller());
 
         }
 
@@ -21,7 +21,7 @@ namespace iphoneWorld
 
             World w = new World();
             w.MakeEngineerTest();
-
+            //Engineer e = new Engineer()
 
         }
     }

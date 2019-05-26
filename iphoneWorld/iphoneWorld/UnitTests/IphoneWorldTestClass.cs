@@ -10,7 +10,7 @@ namespace iphoneWorld.iphoneWorld.UnitTests
     {   
         protected override void SetInstallers()
         {
-            installers.Add(new IphoneWorldInstaller());
+            installers.Add(new UnitTestInstaller());
 
         }
 
@@ -68,13 +68,13 @@ namespace iphoneWorld.iphoneWorld.UnitTests
 
 
 
-        [Test]
-        public void WorldTestCase()
-        {
-            //world = new World();
-            int breaking = world.MakeEngineerTest();
-            Assert.AreEqual(world.getBreakingFloor(), breaking);/**/
-        }
+        //[Test]
+        //public void WorldTestCase()
+        //{
+        //    //world = new World();
+        //    int breaking = world.MakeEngineerTest();
+        //    Assert.AreEqual(world.getBreakingFloor(), breaking);/**/
+        //}
 
 
 
