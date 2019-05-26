@@ -21,7 +21,6 @@ namespace iphoneWorld
 
             World w = new World();
             w.MakeEngineerTest();
-            //Engineer e = new Engineer()
 
         }
     }

@@ -46,7 +46,6 @@ namespace iphoneWorld.iphoneWorld
             _IphoneBeingTested = _listOfIphone[_IphoneBeingTestedIndex];
 
             _building = building;
-            //_DPalgo = new DPAlgorithmGenerator(numberOFPhones, building);
             _DPalgo = DPAlgoG;
             _DPTable = _DPalgo.generateDPTable();
 

@@ -28,8 +28,6 @@ namespace iphoneWorld.iphoneWorld.UnitTests
         [Test()]
         public void DpALgoTestCase()
         {   
-            //_table = new DPTable(3, bInjected);
-            //DPAlgorithmGenerator dpAlgo = new DPAlgorithmGenerator(3, bInjected, _table);
             Assert.AreEqual(1000, _dpAlgo.getBuildingHeight() );
             Assert.AreEqual(3, _dpAlgo.getNumberOfPhones() );
 
@@ -68,13 +66,13 @@ namespace iphoneWorld.iphoneWorld.UnitTests
 
 
 
-        //[Test]
-        //public void WorldTestCase()
-        //{
-        //    //world = new World();
-        //    int breaking = world.MakeEngineerTest();
-        //    Assert.AreEqual(world.getBreakingFloor(), breaking);/**/
-        //}
+        [Test]
+        public void WorldTestCase()
+        {
+            //world = new World();
+            int breaking = world.MakeEngineerTest();
+            Assert.AreEqual(world.getBreakingFloor(), breaking);/**/
+        }
 
 
 
