@@ -1,35 +1,72 @@
 ﻿using System;
+using System.Collections.Generic;
 using Zenject;
 namespace iphoneWorld.iphoneWorld
 
 {
     public class UnitTestInstaller: BindingInstaller
     {
+        private int _BuildingHeight;
+        private int _IPhoneBreakingFloor;
+        private int _NumOfPhones;
+
         public override void Bind()
         {
-            Container.Bind<Ibuilding>().FromInstance(new Building(1000));
+            ContainerBindInterfaceTo<Ibuilding, Building>(false);
             ContainerBindInterfaceTo<DPAlgorithmGenerator, DPAlgorithmGenerator>(false);
+            ContainerBindInterfaceTo<IalgoGeneratable, DPAlgorithmGenerator>(false);
             ContainerBindInterfaceTo<IDPTable, DPTable>(false);
-            Container.Bind<int>().FromInstance(3);
-            //Container.Bind<IDPTable>().FromInstance(new DPTable(3,new Building(1000)));
             ContainerBindInterfaceTo<Itestable, Iphone>(false);
+            ContainerBindInterfaceTo<Iphone, Iphone>(true);
             ContainerBindInterfaceTo<Tester, Engineer>(false);
+
+            Container.Bind<IList<Itestable>>().To<List<Itestable>>().FromInstance(new List<Itestable>() );
+
             ContainerBindInterfaceTo<World, World>(true);
+
+            Container.Bind<int>().FromInstance(_IPhoneBreakingFloor).WhenInjectedInto<Iphone>();
+            Container.Bind<int>().FromInstance(_BuildingHeight).WhenInjectedInto<Building>();
+            Container.Bind<int>().FromInstance(_NumOfPhones);
         }
 
-
-    }
-
-    public class EngineerInstaller : BindingInstaller
-    {
-        public override void Bind()
+        public int BuildingHeight
         {
-            Container.Bind<Ibuilding>().FromInstance(new Building(1000));
-            Container.Bind<int>().FromInstance(100);
-            ContainerBindInterfaceTo<DPAlgorithmGenerator, DPAlgorithmGenerator>(false);
-            ContainerBindInterfaceTo<IDPTable, DPTable>(false);
-
+            get
+            {
+                return _BuildingHeight;
+            }
+            set
+            {
+                this._BuildingHeight = value;
+            }
         }
+
+        public int IPhoneBreakingFloor
+        {
+            get
+            {
+                return this._IPhoneBreakingFloor;
+            }
+            set
+            {
+                this._IPhoneBreakingFloor = value;
+            }
+        }
+
+        public int NumOfPhones
+        {
+            get
+            {
+                return this._NumOfPhones;
+            }
+            set
+            {
+                this._NumOfPhones = value;
+            }
+        }
+
+
     }
+
 
 }

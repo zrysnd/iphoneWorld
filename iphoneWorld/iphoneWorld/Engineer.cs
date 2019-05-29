@@ -5,16 +5,11 @@ using System.Collections.Generic;
 
 namespace iphoneWorld.iphoneWorld
 {
-    public class Engineer : UnitTestBase , Tester, IfloorTellable
+    public class Engineer :  Tester, IfloorTellable
     {
-        protected override void SetInstallers()
-        {
-            installers.Add(new EngineerInstaller());
-
-        }
 
         /*having a list of phones might not be necessary, just for simulation purpose */
-        private List<Itestable> _listOfIphone;
+        private IList<Itestable> _listOfIphone;
         private Itestable _IphoneBeingTested;
         private int _IphoneBeingTestedIndex;
         private int _highestBrokenFloor;
@@ -22,33 +17,36 @@ namespace iphoneWorld.iphoneWorld
         private int _numOfFloorsBelowThisSubBuilding;
         private bool _lastPhoneBroke;
         private ItableAccessable _DPTable;
-        [Inject]
         private IalgoGeneratable _DPalgo;
         private Ibuilding _building;
 
-        public Engineer(Ibuilding building,
-             List<Itestable> listOfPhone, IalgoGeneratable DPAlgoG)
+        public Engineer( IalgoGeneratable DPAlgoG)
         {
             _currentFloor = 0;
             _numOfFloorsBelowThisSubBuilding = 0;
-            _highestBrokenFloor = building.getHeight() + 1;
+
             _lastPhoneBroke = false;
 
+            _DPalgo = DPAlgoG;
+            _DPTable = _DPalgo.generateDPTable();
 
-            //_listOfIphone = new List<Itestable>();
+        }
+
+        public void GoToBuilding(Ibuilding building)
+        {
+            _building = building;
+            _highestBrokenFloor = building.getHeight() + 1;
+        }
+
+        public void PickUpPhones(IList<Itestable> listOfPhone)
+        {
             _listOfIphone = listOfPhone;
+            _IphoneBeingTestedIndex = 0;
+            _IphoneBeingTested = _listOfIphone[_IphoneBeingTestedIndex];
             for (int i = 0; i <= _listOfIphone.Count - 1; i++)
             {
                 _listOfIphone[i].carriedBy(this);
             }
-
-            _IphoneBeingTestedIndex = 0;
-            _IphoneBeingTested = _listOfIphone[_IphoneBeingTestedIndex];
-
-            _building = building;
-            _DPalgo = DPAlgoG;
-            _DPTable = _DPalgo.generateDPTable();
-
         }
 
         public int getCurrentFloor() 

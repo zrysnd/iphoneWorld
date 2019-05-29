@@ -34,11 +34,24 @@ namespace iphoneWorld.iphoneWorld
         public void getTested()
         {
             _broken = (_currentFloor > _breakingFloor);
+            //_broken = (_carrier.getCurrentFloor() > _breakingFloor);
         }
 
         public void updateCurrentFloor()
         {
             _currentFloor = _carrier.getCurrentFloor();
         }
+
+        public  void setBreakingFloor(int floor)
+        {
+            _breakingFloor = floor;
+        }
+
+        public int getBreakingFloor()
+        {
+            return _breakingFloor;
+        }
+
+        
     }
 }

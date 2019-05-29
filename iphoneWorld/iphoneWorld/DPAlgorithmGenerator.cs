@@ -14,7 +14,6 @@ namespace iphoneWorld.iphoneWorld
             _numOfPhones = numberOfIphones;
             _buildingHeight = building.getHeight();
             _maxNumberOfTestsNeeded = new int[_numOfPhones + 1, _buildingHeight + 1];
-            //DPTable aDpTable = new DPTable(numberOfIphones, building);/*inject? but have parameters*/
             _wirteonlyDPTable = aDpTable;
             _readonlyDPtable = aDpTable;
 

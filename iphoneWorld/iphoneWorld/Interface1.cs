@@ -10,18 +10,21 @@ namespace iphoneWorld.iphoneWorld
 
     public interface Icarriable
     {
-        void updateCurrentFloor();/* /*I'm not sure whether I should inject engineer or carrier to iphone class, 
-        or pass new floor by parameter.*/
-        //whichever is natural and SOLID */
+        void updateCurrentFloor();
         void carriedBy(IfloorTellable carrier);
      
     }
     public interface Itestable: Icarriable
     {
+        void setBreakingFloor(int floor);
         void getTested();
         bool isBroken();
     }
 
+    public interface IgroupOfTestable
+    {
+        void TestOneOfThePhones();
+    }
 
 
     public interface IfloorTellable
@@ -32,6 +35,8 @@ namespace iphoneWorld.iphoneWorld
     public interface Tester
     {
         int test();
+        void GoToBuilding(Ibuilding building);
+        void PickUpPhones(IList<Itestable> listOfPhone);
     }
     
 

@@ -7,14 +7,28 @@ namespace iphoneWorld.iphoneWorld.UnitTests
 {
     [TestFixture()]
     public class IphoneWorldTestClass : UnitTestBase
-    {   
+    {
+        private int _BuildingHeightDefault = 1000;
+        private int _IPhoneBreakingFloorDefault = 500;
+        private int _NumOfPhonesDefault = 3;
+
         protected override void SetInstallers()
         {
-            installers.Add(new UnitTestInstaller());
+            UnitTestInstaller HaveToCallConstructorHere = new UnitTestInstaller();
+
+            HaveToCallConstructorHere.BuildingHeight = _BuildingHeightDefault;
+            HaveToCallConstructorHere.IPhoneBreakingFloor = _IPhoneBreakingFloorDefault;
+            HaveToCallConstructorHere.NumOfPhones = _NumOfPhonesDefault;
+
+            installers.Add( HaveToCallConstructorHere );
 
         }
-
-
+        [Inject]
+        Tester _engineer;
+        [Inject]
+        Iphone aIphone;
+        [Inject]
+        Itestable iPhoneToBeTested;
         [Inject]
         Ibuilding bInjected;
         [Inject]
@@ -22,14 +36,35 @@ namespace iphoneWorld.iphoneWorld.UnitTests
         [Inject]
         DPAlgorithmGenerator _dpAlgo;
         [Inject]
+        IalgoGeneratable _AlgoToBeInjectedToEngineer;
+        [Inject]
+        IList<Itestable> _listOfPhones;
+        [Inject]
         World world;
+        int numOfPhone = 3;
   
+
+        [Test()]
+        public void BuildingTestCase()
+        {
+            Assert.AreEqual(bInjected.getHeight(), _BuildingHeightDefault);
+        }
+
+        [Test()]
+        public void IphoneTestCase()
+        {
+            Assert.AreEqual(aIphone.getBreakingFloor(), _IPhoneBreakingFloorDefault);
+            aIphone.setBreakingFloor(10000);
+            Assert.AreEqual(aIphone.getBreakingFloor(), 10000);
+
+        }
+
 
         [Test()]
         public void DpALgoTestCase()
         {   
-            Assert.AreEqual(1000, _dpAlgo.getBuildingHeight() );
-            Assert.AreEqual(3, _dpAlgo.getNumberOfPhones() );
+            Assert.AreEqual(_BuildingHeightDefault, _dpAlgo.getBuildingHeight() );
+            Assert.AreEqual(_NumOfPhonesDefault, _dpAlgo.getNumberOfPhones() );
 
             _dpAlgo.generateDPTable();
             Assert.AreEqual(14, _dpAlgo.AccessMaxNumberOfTestsNeeded(2, 100));
@@ -64,6 +99,20 @@ namespace iphoneWorld.iphoneWorld.UnitTests
 
         }
 
+        [Test]
+        public void EngineerTestCase()
+        {
+
+            //List<Itestable> listOfPhones = new List<Itestable>();
+            for(int i = 0; i <= numOfPhone - 1; i++)
+            {
+                _listOfPhones.Add(iPhoneToBeTested);
+            }
+            _engineer.GoToBuilding(bInjected);
+            _engineer.PickUpPhones(_listOfPhones);
+            Assert.AreEqual(_IPhoneBreakingFloorDefault, _engineer.test());
+
+        }
 
 
         [Test]

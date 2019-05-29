@@ -42,7 +42,9 @@ namespace iphoneWorld.iphoneWorld
             _building = new Building(_buildingHeight);
             _dpTable = new DPTable(_numOfPhones, _building);
             _algoG = new DPAlgorithmGenerator(_numOfPhones, _building, _dpTable);
-            _engineer = new Engineer(_building, phoneList, _algoG);
+            _engineer = new Engineer(_algoG);
+            _engineer.GoToBuilding(_building);
+            _engineer.PickUpPhones(phoneList);
         }
         public int MakeEngineerTest()
         {
