@@ -1,7 +1,7 @@
 ﻿using System;
 namespace iphoneWorld.iphoneWorld
 {
-    public class Iphone : Itestable
+    public class Iphone : Itestable //having this class to represent each individual iphone may not be most economical , after all you could do it using only 1 int. maybe it's better to represent the collection of phones. 
     {
 
         private bool _broken;
@@ -10,6 +10,9 @@ namespace iphoneWorld.iphoneWorld
                                     /* I might misunderstood the project, should we decide at which floor the iphone breaks at first,
                                      or when we do tests, the program randomly decide whether the phone breaks, and based on the results
                                      we tell at which floor the iphones break?  */
+                                     
+                                     //the project is not to create something useful, it is for you to practice the new skills you learned. make it suitable. 
+                                     
         private int _currentFloor; //makes sense to be at current floor
         private IfloorTellable _carrier;
 
