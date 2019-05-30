@@ -31,9 +31,9 @@ namespace iphoneWorld.iphoneWorld
             return _broken;
         }
 
-        public void getTested()
+        public bool getTested()
         {
-            _broken = (_currentFloor > _breakingFloor);
+            return (_currentFloor > _breakingFloor);
             //_broken = (_carrier.getCurrentFloor() > _breakingFloor);
         }
 

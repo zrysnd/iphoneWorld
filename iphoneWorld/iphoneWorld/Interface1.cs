@@ -17,8 +17,8 @@ namespace iphoneWorld.iphoneWorld
     public interface Itestable: Icarriable
     {
         void setBreakingFloor(int floor);
-        void getTested();
-        bool isBroken();
+        bool getTested();
+        //bool isBroken();
     }
 
     public interface IgroupOfTestable
@@ -36,7 +36,7 @@ namespace iphoneWorld.iphoneWorld
     {
         int test();
         void GoToBuilding(Ibuilding building);
-        void PickUpPhones(IList<Itestable> listOfPhone);
+        void PickUpPhones(int numOfPhones, Itestable Phone);
     }
     
 

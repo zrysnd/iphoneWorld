@@ -39,8 +39,7 @@ namespace iphoneWorld.iphoneWorld.UnitTests
         IalgoGeneratable _AlgoToBeInjectedToEngineer;
         [Inject]
         IList<Itestable> _listOfPhones;
-        [Inject]
-        World world;
+
         int numOfPhone = 3;
   
 
@@ -102,26 +101,19 @@ namespace iphoneWorld.iphoneWorld.UnitTests
         [Test]
         public void EngineerTestCase()
         {
-
-            //List<Itestable> listOfPhones = new List<Itestable>();
-            for(int i = 0; i <= numOfPhone - 1; i++)
-            {
-                _listOfPhones.Add(iPhoneToBeTested);
-            }
+        
+            //for(int i = 0; i <= numOfPhone - 1; i++)
+            //{
+            //    _listOfPhones.Add(iPhoneToBeTested);
+            //}
             _engineer.GoToBuilding(bInjected);
-            _engineer.PickUpPhones(_listOfPhones);
+            //_engineer.PickUpPhones(100,_listOfPhones);
+            _engineer.PickUpPhones(100, iPhoneToBeTested);
             Assert.AreEqual(_IPhoneBreakingFloorDefault, _engineer.test());
 
         }
 
 
-        [Test]
-        public void WorldTestCase()
-        {
-            //world = new World();
-            int breaking = world.MakeEngineerTest();
-            Assert.AreEqual(world.getBreakingFloor(), breaking);/**/
-        }
 
 
 

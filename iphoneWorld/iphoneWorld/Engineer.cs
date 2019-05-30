@@ -9,7 +9,8 @@ namespace iphoneWorld.iphoneWorld
     {
 
         /*having a list of phones might not be necessary, just for simulation purpose */
-        private IList<Itestable> _listOfIphone;
+        //private IList<Itestable> _listOfIphone;
+        private int _numOfPhonesLeft;
         private Itestable _IphoneBeingTested;
         private int _IphoneBeingTestedIndex;
         private int _highestBrokenFloor;
@@ -38,15 +39,12 @@ namespace iphoneWorld.iphoneWorld
             _highestBrokenFloor = building.getHeight() + 1;
         }
 
-        public void PickUpPhones(IList<Itestable> listOfPhone)
+        public void PickUpPhones( int numOfPhones, Itestable Phone)
         {
-            _listOfIphone = listOfPhone;
+            Phone.carriedBy(this);
+            _IphoneBeingTested = Phone;
             _IphoneBeingTestedIndex = 0;
-            _IphoneBeingTested = _listOfIphone[_IphoneBeingTestedIndex];
-            for (int i = 0; i <= _listOfIphone.Count - 1; i++)
-            {
-                _listOfIphone[i].carriedBy(this);
-            }
+            this._numOfPhonesLeft = numOfPhones;
         }
 
         public int getCurrentFloor() 
@@ -57,28 +55,27 @@ namespace iphoneWorld.iphoneWorld
         public void moveToNextFloor()
         {
             _currentFloor++;
-            for (int i = 0; i <= _listOfIphone.Count - 1; i++)
-            {
-                _listOfIphone[i].updateCurrentFloor();
-            }
+            this._IphoneBeingTested.updateCurrentFloor();
 
         }
 
         public void moveToNextBestFloor()
         {
-            int numOfPhonesLeftNow = _listOfIphone.Count - _IphoneBeingTestedIndex;
+            //int numOfPhonesLeftNow = _listOfIphone.Count - _IphoneBeingTestedIndex;
             int heightOfThisSubBuilding;
             if (_lastPhoneBroke)
                 heightOfThisSubBuilding = _currentFloor - 1 - _numOfFloorsBelowThisSubBuilding;
             else
                 heightOfThisSubBuilding = _highestBrokenFloor - 1 - _currentFloor;
 
-            int nextBestFloorInSubBuilding = _DPTable.accessTable(numOfPhonesLeftNow, heightOfThisSubBuilding);
+            //int nextBestFloorInSubBuilding = _DPTable.accessTable(numOfPhonesLeftNow, heightOfThisSubBuilding);
+            int nextBestFloorInSubBuilding = _DPTable.accessTable(this._numOfPhonesLeft, heightOfThisSubBuilding);
             _currentFloor = _numOfFloorsBelowThisSubBuilding + nextBestFloorInSubBuilding;
-            for (int i = 0; i <= _listOfIphone.Count - 1; i++)
-            {
-                _listOfIphone[i].updateCurrentFloor();
-            }
+            //for (int i = 0; i <= _listOfIphone.Count - 1; i++)
+            //{
+            //    _listOfIphone[i].updateCurrentFloor();
+            //}
+            this._IphoneBeingTested.updateCurrentFloor();
             Console.WriteLine("Engineer moved to floor " + _currentFloor);
 
         }
@@ -88,9 +85,9 @@ namespace iphoneWorld.iphoneWorld
         {
 
                 this.moveToNextBestFloor();
-                _IphoneBeingTested.getTested();
+                bool PhoneBroken = _IphoneBeingTested.getTested();
 
-                if (_IphoneBeingTested.isBroken())
+                if (PhoneBroken)
                 {   
                     Console.WriteLine("One Iphone broke at floor " + _currentFloor);
                     _lastPhoneBroke = true;
@@ -98,7 +95,8 @@ namespace iphoneWorld.iphoneWorld
                     _highestBrokenFloor = _currentFloor;
                     if (_highestBrokenFloor == _numOfFloorsBelowThisSubBuilding + 1)
                         return;
-                    _IphoneBeingTested = _listOfIphone[_IphoneBeingTestedIndex];
+                    //_IphoneBeingTested = _listOfIphone[_IphoneBeingTestedIndex];
+                    this._numOfPhonesLeft--;
 
                 }
                 else

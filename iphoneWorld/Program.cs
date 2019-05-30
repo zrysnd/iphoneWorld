@@ -19,8 +19,8 @@ namespace iphoneWorld
         public static void Main(string[] args)
         {
 
-            World w = new World();
-            w.MakeEngineerTest();
+            //World w = new World();
+            //w.MakeEngineerTest();
 
         }
     }

@@ -22,7 +22,6 @@ namespace iphoneWorld.iphoneWorld
 
             Container.Bind<IList<Itestable>>().To<List<Itestable>>().FromInstance(new List<Itestable>() );
 
-            ContainerBindInterfaceTo<World, World>(true);
 
             Container.Bind<int>().FromInstance(_IPhoneBreakingFloor).WhenInjectedInto<Iphone>();
             Container.Bind<int>().FromInstance(_BuildingHeight).WhenInjectedInto<Building>();
