@@ -5,7 +5,6 @@ namespace iphoneWorld.iphoneWorld
     {
         private ItableWritable _wirteonlyDPTable;/*this table contains information which tells the engineer at which floor to start the test*/
         private ItableAccessable _readonlyDPtable;
-        //private int[,] _maxNumberOfTestsNeeded;
         private ITwoDIntArray _maxNumberOfTestsNeeded;
         private readonly int _numOfPhones;
         private readonly int _buildingHeight;
@@ -38,14 +37,11 @@ namespace iphoneWorld.iphoneWorld
             {
                 _maxNumberOfTestsNeeded.SetElement(i, 1, 1);
                 _maxNumberOfTestsNeeded.SetElement(i, 0, 0);
-                //_maxNumberOfTestsNeeded[i, 1] = 1;
-                //_maxNumberOfTestsNeeded[i, 0] = 0;
                 _wirteonlyDPTable.writeToTable(i, 1, 1);/**/
             }
             for(int j = 1; j <= _buildingHeight; j++)
             {
                 _maxNumberOfTestsNeeded.SetElement(1, j, j);
-                //_maxNumberOfTestsNeeded[1,j] = j;
                 _wirteonlyDPTable.writeToTable(1, j, 1);/**/
             }
 
@@ -53,22 +49,16 @@ namespace iphoneWorld.iphoneWorld
             {
                 for(int j = 2; j <= _buildingHeight; j++)
                 {
-                    //_maxNumberOfTestsNeeded[i, j] = int.MaxValue;
                     _maxNumberOfTestsNeeded.SetElement(i, j, int.MaxValue);
                     for(int x = 1; x<= j; x++)
                     {
                         int worstCaseNumOfTestNeededIfLastTestWasAtFloorX = 1 +
-                                                     //MaxOfTwo(_maxNumberOfTestsNeeded[i-1,x-1],
-                                                     //_maxNumberOfTestsNeeded[i,j-x] ) ;
                                                      MaxOfTwo(_maxNumberOfTestsNeeded.AccessElement(i-1,x-1),
                                                      _maxNumberOfTestsNeeded.AccessElement(i,j-x));
 
                         if (worstCaseNumOfTestNeededIfLastTestWasAtFloorX <
-                            //_maxNumberOfTestsNeeded[i,j])
                             _maxNumberOfTestsNeeded.AccessElement(i, j))
                         {
-                            //_maxNumberOfTestsNeeded[i, j] = 
-                            //worstCaseNumOfTestNeededIfLastTestWasAtFloorX;
                             _maxNumberOfTestsNeeded.SetElement(i, j, 
                                 worstCaseNumOfTestNeededIfLastTestWasAtFloorX);
 
@@ -84,7 +74,6 @@ namespace iphoneWorld.iphoneWorld
 
         public int AccessMaxNumberOfTestsNeeded(int i, int j)
         {
-            //return _maxNumberOfTestsNeeded[i, j];
             return _maxNumberOfTestsNeeded.AccessElement(i, j);
         }
 

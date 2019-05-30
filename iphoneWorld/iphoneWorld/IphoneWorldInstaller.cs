@@ -27,11 +27,6 @@ namespace iphoneWorld.iphoneWorld
 
             //Container.Bind<ITwoDIntArray>().FromInstance(new TwoDArray(new int[(_NumOfPhones + 1) * (_BuildingHeight + 1)] , _NumOfPhones+1));
 
-
-
-
-            Container.Bind<int[,]>().FromInstance(new int[ _NumOfPhones + 1, _BuildingHeight + 1]).AsTransient();
-
             Container.Bind<int>().FromInstance(_IPhoneBreakingFloor).WhenInjectedInto<Iphone>();
             Container.Bind<int>().FromInstance(_BuildingHeight).WhenInjectedInto<Building>();
             Container.Bind<int>().FromInstance(_NumOfPhones);

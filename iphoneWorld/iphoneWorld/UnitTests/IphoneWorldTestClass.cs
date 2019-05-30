@@ -24,6 +24,8 @@ namespace iphoneWorld.iphoneWorld.UnitTests
 
         }
         [Inject]
+        ITwoDIntArray _2dArray;
+        [Inject]
         Tester _engineer;
         [Inject]
         Iphone aIphone;
@@ -40,6 +42,12 @@ namespace iphoneWorld.iphoneWorld.UnitTests
 
         int numOfPhone = 3;
   
+        [Test()]
+        public void TwoDArrayTestCase()
+        {
+            _2dArray.SetElement(1, 2, 3);
+            Assert.AreEqual(3, _2dArray.AccessElement(1, 2));
+        }
 
         [Test()]
         public void BuildingTestCase()
@@ -99,13 +107,7 @@ namespace iphoneWorld.iphoneWorld.UnitTests
         [Test]
         public void EngineerTestCase()
         {
-        
-            //for(int i = 0; i <= numOfPhone - 1; i++)
-            //{
-            //    _listOfPhones.Add(iPhoneToBeTested);
-            //}
             _engineer.GoToBuilding(bInjected);
-            //_engineer.PickUpPhones(100,_listOfPhones);
             _engineer.PickUpPhones(100, iPhoneToBeTested);
             Assert.AreEqual(_IPhoneBreakingFloorDefault, _engineer.test());
 

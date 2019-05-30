@@ -7,20 +7,13 @@ namespace iphoneWorld
 
 
 {
-    class MainClass : UnitTestBase
+    class MainClass 
     {
-        protected override void SetInstallers()
-        {
-            installers.Add(new UnitTestInstaller());
-
-        }
 
         /*it seems that it's hard use inject for main function, main function is static*/
         public static void Main(string[] args)
         {
-
-            //World w = new World();
-            //w.MakeEngineerTest();
+        
 
         }
     }
