@@ -26,8 +26,9 @@ namespace iphoneWorld.iphoneWorld
             Container.Bind<int>().FromInstance((_NumOfPhones + 1)).WhenInjectedInto<TwoDArray>();
             Container.Bind<int>().FromInstance((_NumOfPhones + 1) * (_BuildingHeight + 1)).WhenInjectedInto<int[]>();
 
-            //Container.Bind<ITwoDIntArray>().FromInstance(new TwoDArray(new int[(_NumOfPhones + 1) * (_BuildingHeight + 1)] , _NumOfPhones+1));
 
+
+            Container.Bind<short>().FromInstance((short)_NumOfPhones).WhenInjectedInto<IgroupOfTestable>();
             Container.Bind<int>().FromInstance(_IPhoneBreakingFloor).WhenInjectedInto<Iphones>();
             Container.Bind<int>().FromInstance(_BuildingHeight).WhenInjectedInto<Building>();
             Container.Bind<int>().FromInstance(_NumOfPhones);

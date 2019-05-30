@@ -14,7 +14,7 @@ namespace iphoneWorld.iphoneWorld
 
     public interface Icountable
     {
-        int numOfItemsLeft { get; set; }
+        short numOfItemsLeft { get; set; }
     }
 
     public interface Icarriable
@@ -50,7 +50,6 @@ namespace iphoneWorld.iphoneWorld
     {
         int test();
         void GoToBuilding(Ibuilding building);
-        //void PickUpPhones(int numOfPhones, Itestable Phone);
         void PickUpPhones( IgroupOfTestable Phones);
     }
     

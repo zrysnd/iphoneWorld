@@ -4,7 +4,7 @@ namespace iphoneWorld.iphoneWorld
     public class Iphones : IgroupOfTestable //having this class to represent each individual iphone may not be most economical , after all you could do it using only 1 int. maybe it's better to represent the collection of phones. 
     {
     
-        private int _numOfPhonesLeft;
+        private short _numOfPhonesLeft;
         private int _breakingFloor; //why would a phone know the max floor, max of what -> changed name, this floor is where the iphone breaks.
                                     /* I might misunderstood the project, should we decide at which floor the iphone breaks at first,
                                      or when we do tests, the program randomly decide whether the phone breaks, and based on the results
@@ -15,7 +15,7 @@ namespace iphoneWorld.iphoneWorld
         private int _currentFloor; //makes sense to be at current floor
         private IfloorTellable _carrier;
 
-        public int numOfItemsLeft 
+        public short numOfItemsLeft 
         {
             get
             {
@@ -27,9 +27,9 @@ namespace iphoneWorld.iphoneWorld
             }
         }
 
-        public Iphones(int breakingFloor)//, int numOfPhones)
+        public Iphones(int breakingFloor, short numOfPhones)
         {
-            //_numOfPhonesLeft = numOfPhones;
+            _numOfPhonesLeft = numOfPhones;
             _breakingFloor = breakingFloor;
             _currentFloor = 0;
         }

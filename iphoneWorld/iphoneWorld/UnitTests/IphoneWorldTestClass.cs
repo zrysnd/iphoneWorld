@@ -103,7 +103,6 @@ namespace iphoneWorld.iphoneWorld.UnitTests
         public void EngineerTestCase()
         {
             _engineer.GoToBuilding(bInjected);
-            iPhonesToBeTested.numOfItemsLeft = _NumOfPhonesDefault;
             _engineer.PickUpPhones(iPhonesToBeTested);
             Assert.AreEqual(_IPhoneBreakingFloorDefault, _engineer.test());
 
