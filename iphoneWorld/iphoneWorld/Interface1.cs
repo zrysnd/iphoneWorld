@@ -22,12 +22,6 @@ namespace iphoneWorld.iphoneWorld
     {
         void setBreakingFloor(int floor);
         bool getTested();
-        //bool isBroken();
-    }
-
-    public interface IgroupOfTestable
-    {
-        void TestOneOfThePhones();
     }
 
 

@@ -34,13 +34,8 @@ namespace iphoneWorld.iphoneWorld.UnitTests
         [Inject]
         Ibuilding bInjected;
         [Inject]
-        IDPTable _table;
-        [Inject]
         DPAlgorithmGenerator _dpAlgo;
-        [Inject]
-        IalgoGeneratable _AlgoToBeInjectedToEngineer;
 
-        int numOfPhone = 3;
   
         [Test()]
         public void TwoDArrayTestCase()
@@ -83,7 +78,7 @@ namespace iphoneWorld.iphoneWorld.UnitTests
         public void DpTableTestCase()
         {
        
-            ItableAccessable aDpTable = _dpAlgo.generateDPTable();
+            ItableAccessable aDpTable = _dpAlgo.generateDPTable();//
 
             Assert.AreEqual(1, aDpTable.accessTable(1, 10));
 
