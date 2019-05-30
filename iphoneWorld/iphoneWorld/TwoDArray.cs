@@ -1,15 +1,17 @@
 ﻿using System;
 namespace iphoneWorld.iphoneWorld
 {
-    public class TwoDIntArray
+    public class TwoDArray:ITwoDIntArray
     {
         private int[] _array;
         private int _numOfRows;
         private int _numOfCols; 
 
-        public TwoDIntArray(int[] array )
+        public TwoDArray(int[] array, int numOfRows )
         {
             _array = array;
+            _numOfRows = numOfRows;
+            _numOfCols = array.Length / _numOfRows;
         }
 
         public int AccessElement(int i, int j)
