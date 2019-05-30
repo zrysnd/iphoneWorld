@@ -28,9 +28,9 @@ namespace iphoneWorld.iphoneWorld.UnitTests
         [Inject]
         Tester _engineer;
         [Inject]
-        Iphone aIphone;
+        Iphones aGroupOfIphones;
         [Inject]
-        Itestable iPhoneToBeTested;
+        IgroupOfTestable iPhonesToBeTested;
         [Inject]
         Ibuilding bInjected;
         [Inject]
@@ -53,9 +53,9 @@ namespace iphoneWorld.iphoneWorld.UnitTests
         [Test()]
         public void IphoneTestCase()
         {
-            Assert.AreEqual(aIphone.getBreakingFloor(), _IPhoneBreakingFloorDefault);
-            aIphone.setBreakingFloor(10000);
-            Assert.AreEqual(aIphone.getBreakingFloor(), 10000);
+            Assert.AreEqual(aGroupOfIphones.BreakingFloor, _IPhoneBreakingFloorDefault);
+            aGroupOfIphones.BreakingFloor = 10000 ;
+            Assert.AreEqual(aGroupOfIphones.BreakingFloor, 10000);
 
         }
 
@@ -103,7 +103,8 @@ namespace iphoneWorld.iphoneWorld.UnitTests
         public void EngineerTestCase()
         {
             _engineer.GoToBuilding(bInjected);
-            _engineer.PickUpPhones(100, iPhoneToBeTested);
+            iPhonesToBeTested.numOfItemsLeft = _NumOfPhonesDefault;
+            _engineer.PickUpPhones(iPhonesToBeTested);
             Assert.AreEqual(_IPhoneBreakingFloorDefault, _engineer.test());
 
         }

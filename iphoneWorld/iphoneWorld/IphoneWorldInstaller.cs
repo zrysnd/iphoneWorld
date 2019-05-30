@@ -16,8 +16,8 @@ namespace iphoneWorld.iphoneWorld
             ContainerBindInterfaceTo<DPAlgorithmGenerator, DPAlgorithmGenerator>(false);
             ContainerBindInterfaceTo<IalgoGeneratable, DPAlgorithmGenerator>(false);
             ContainerBindInterfaceTo<IDPTable, DPTable>(false);
-            ContainerBindInterfaceTo<Itestable, Iphone>(false);
-            ContainerBindInterfaceTo<Iphone, Iphone>(true);
+            ContainerBindInterfaceTo<IgroupOfTestable, Iphones>(false);
+            ContainerBindInterfaceTo<Iphones, Iphones>(true);
             ContainerBindInterfaceTo<Tester, Engineer>(false);
             ContainerBindInterfaceTo<Irecordable, TestRecords>(false);
 
@@ -28,7 +28,7 @@ namespace iphoneWorld.iphoneWorld
 
             //Container.Bind<ITwoDIntArray>().FromInstance(new TwoDArray(new int[(_NumOfPhones + 1) * (_BuildingHeight + 1)] , _NumOfPhones+1));
 
-            Container.Bind<int>().FromInstance(_IPhoneBreakingFloor).WhenInjectedInto<Iphone>();
+            Container.Bind<int>().FromInstance(_IPhoneBreakingFloor).WhenInjectedInto<Iphones>();
             Container.Bind<int>().FromInstance(_BuildingHeight).WhenInjectedInto<Building>();
             Container.Bind<int>().FromInstance(_NumOfPhones);
         }

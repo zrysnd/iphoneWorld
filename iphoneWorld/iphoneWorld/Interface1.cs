@@ -12,6 +12,11 @@ namespace iphoneWorld.iphoneWorld
         void SetElement(int i, int j, int newValue);
     }
 
+    public interface Icountable
+    {
+        int numOfItemsLeft { get; set; }
+    }
+
     public interface Icarriable
     {
         void updateCurrentFloor();
@@ -20,8 +25,11 @@ namespace iphoneWorld.iphoneWorld
     }
     public interface Itestable: Icarriable
     {
-        void setBreakingFloor(int floor);
         bool getTested();
+    }
+
+    public interface IgroupOfTestable: Itestable, Icountable
+    {
     }
 
     public interface Irecordable
@@ -42,7 +50,8 @@ namespace iphoneWorld.iphoneWorld
     {
         int test();
         void GoToBuilding(Ibuilding building);
-        void PickUpPhones(int numOfPhones, Itestable Phone);
+        //void PickUpPhones(int numOfPhones, Itestable Phone);
+        void PickUpPhones( IgroupOfTestable Phones);
     }
     
 

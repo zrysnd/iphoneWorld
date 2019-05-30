@@ -1,12 +1,12 @@
 ﻿<Properties StartupConfiguration="{39C76857-4CAD-45F6-BA7F-CD044B99EFC7}|Default">
   <MonoDevelop.Ide.ItemProperties.iphoneWorld PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="iphoneWorld/iphoneWorld/IphoneWorldInstaller.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="iphoneWorld/iphoneWorld/Engineer.cs">
     <Files>
-      <File FileName="iphoneWorld/iphoneWorld/Interface1.cs" Line="23" Column="42" />
-      <File FileName="iphoneWorld/iphoneWorld/TestRecords.cs" Line="16" Column="1" />
-      <File FileName="iphoneWorld/iphoneWorld/Engineer.cs" Line="26" Column="45" />
-      <File FileName="iphoneWorld/iphoneWorld/IphoneWorldInstaller.cs" Line="59" Column="1" />
-      <File FileName="iphoneWorld/iphoneWorld/Iphone.cs" Line="8" Column="1" />
+      <File FileName="iphoneWorld/iphoneWorld/Interface1.cs" Line="55" Column="6" />
+      <File FileName="iphoneWorld/iphoneWorld/Iphones.cs" Line="33" Column="44" />
+      <File FileName="iphoneWorld/iphoneWorld/UnitTests/IphoneWorldTestClass.cs" Line="115" Column="1" />
+      <File FileName="iphoneWorld/iphoneWorld/Engineer.cs" Line="30" Column="34" />
+      <File FileName="iphoneWorld/iphoneWorld/IphoneWorldInstaller.cs" Line="11" Column="33" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -16,7 +16,7 @@
               <Node name="References" expanded="True" />
               <Node name="iphoneWorld" expanded="True">
                 <Node name="UnitTests" expanded="True" />
-                <Node name="IphoneWorldInstaller.cs" selected="True" />
+                <Node name="Engineer.cs" selected="True" />
               </Node>
             </Node>
           </Node>
@@ -24,7 +24,13 @@
       </Pad>
       <Pad Id="MonoDevelop.UnitTesting.TestPad">
         <State name="__root__">
-          <Node name="iphoneWorld" expanded="True" selected="True" />
+          <Node name="iphoneWorld" expanded="True" selected="True">
+            <Node name="iphoneWorld" expanded="True">
+              <Node name="iphoneWorld" expanded="True">
+                <Node name="IphoneWorldTestClass" expanded="True" />
+              </Node>
+            </Node>
+          </Node>
         </State>
       </Pad>
     </Pads>

@@ -47,7 +47,7 @@
     <Compile Include="iphoneWorld\Building.cs" />
     <Compile Include="iphoneWorld\Interface1.cs" />
     <Compile Include="iphoneWorld\Engineer.cs" />
-    <Compile Include="iphoneWorld\Iphone.cs" />
+    <Compile Include="iphoneWorld\Iphones.cs" />
     <Compile Include="iphoneWorld\DPAlgorithmGenerator.cs" />
     <Compile Include="iphoneWorld\UnitTests\IphoneWorldTestClass.cs" />
     <Compile Include="iphoneWorld\DPTable.cs" />

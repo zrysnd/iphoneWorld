@@ -7,44 +7,40 @@ namespace iphoneWorld.iphoneWorld
 {
     public class Engineer :  Tester, IfloorTellable
     {
+    
+        //your engineer is doing too much, violation of [s]olid
 
-        private int _numOfPhonesLeft; //your engineer is doing too much, violation of [s]olid
-        private Itestable _IphoneBeingTested;
+        private IgroupOfTestable _IphonesBeingTested;
         private int _currentFloor;
         private ItableAccessable _DPTable;
         private IalgoGeneratable _DPalgo;
-        private Ibuilding _building;
         private Irecordable _testRecord;
 
 
 
-        public Engineer( IalgoGeneratable DPAlgoG, int numOfPhones, Itestable Phone, Irecordable testRecord)
+        public Engineer( IalgoGeneratable DPAlgoG, Irecordable testRecord)
         {
             _currentFloor = 0;
             _DPalgo = DPAlgoG;
             _DPTable = _DPalgo.generateDPTable();
-            Phone.carriedBy(this);
-            _IphoneBeingTested = Phone;
-            this._numOfPhonesLeft = numOfPhones;
-            _testRecord = testRecord;
 
+            _testRecord = testRecord;
 
         }
 
         public void GoToBuilding(Ibuilding building)
         {
-            _building = building;
             this._testRecord.HighestBrokenFloor = building.getHeight()+1;
 
         }
 
 
-        public void PickUpPhones( int numOfPhones, Itestable Phone)
+        public void PickUpPhones(IgroupOfTestable Phones)
         {
-            Phone.carriedBy(this);
-            _IphoneBeingTested = Phone;
-            this._numOfPhonesLeft = numOfPhones;
+            Phones.carriedBy(this);
+            _IphonesBeingTested = Phones;
         }
+
 
         public int getCurrentFloor() 
         { 
@@ -54,7 +50,7 @@ namespace iphoneWorld.iphoneWorld
         public void moveToNextFloor()
         {
             _currentFloor++;
-            this._IphoneBeingTested.updateCurrentFloor();
+            this._IphonesBeingTested.updateCurrentFloor();
 
         }
 
@@ -66,9 +62,9 @@ namespace iphoneWorld.iphoneWorld
             else
                 heightOfThisSubBuilding = _testRecord.HighestBrokenFloor - 1 - _currentFloor;
 
-            int nextBestFloorInSubBuilding = _DPTable.accessTable(this._numOfPhonesLeft, heightOfThisSubBuilding);
+            int nextBestFloorInSubBuilding = _DPTable.accessTable(_IphonesBeingTested.numOfItemsLeft, heightOfThisSubBuilding);
             _currentFloor = _testRecord.NumOfFloorsBelowThisSubBuilding + nextBestFloorInSubBuilding;
-            this._IphoneBeingTested.updateCurrentFloor();
+            this._IphonesBeingTested.updateCurrentFloor();
             Console.WriteLine("Engineer moved to floor " + _currentFloor);
 
         }
@@ -78,7 +74,7 @@ namespace iphoneWorld.iphoneWorld
         {
 
                 this.moveToNextBestFloor();
-                bool PhoneBroken = _IphoneBeingTested.getTested();
+                bool PhoneBroken = _IphonesBeingTested.getTested();
 
                 if (PhoneBroken)
                 {   
@@ -87,7 +83,7 @@ namespace iphoneWorld.iphoneWorld
                     _testRecord.HighestBrokenFloor = _currentFloor;
                     if (_testRecord.HighestBrokenFloor == _testRecord.NumOfFloorsBelowThisSubBuilding + 1)
                         return;
-                    this._numOfPhonesLeft--;
+                    this._IphonesBeingTested.numOfItemsLeft--;
 
                 }
                 else
