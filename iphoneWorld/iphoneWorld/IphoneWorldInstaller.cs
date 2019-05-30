@@ -20,7 +20,11 @@ namespace iphoneWorld.iphoneWorld
             ContainerBindInterfaceTo<Iphone, Iphone>(true);
             ContainerBindInterfaceTo<Tester, Engineer>(false);
 
-            Container.Bind<IList<Itestable>>().To<List<Itestable>>().FromInstance(new List<Itestable>() );
+            //Container.Bind<int[,]>().To<int[,]>().When()
+            Container.Bind<int[][]>().FromInstance(new int[_NumOfPhones + 1][]);
+            Container.Bind<int[]>().FromInstance(new int[_BuildingHeight+1]);
+
+            Container.Bind<int[,]>().FromInstance(new int[ _NumOfPhones + 1, _BuildingHeight + 1]).AsTransient();
 
 
             Container.Bind<int>().FromInstance(_IPhoneBreakingFloor).WhenInjectedInto<Iphone>();

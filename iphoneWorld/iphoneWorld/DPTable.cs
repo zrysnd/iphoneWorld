@@ -10,6 +10,12 @@ namespace iphoneWorld.iphoneWorld
             _table = new int[numberOfIphones+1, building.getHeight()+1];
         }
 
+        //public DPTable(int[,] table)
+        //{
+        //    //int[][] i = new int[2][];
+        //    _table = table;
+        //}
+
         public int accessTable(int numberOfPhonesLeft, int buildingHeight) 
         { 
             return _table[numberOfPhonesLeft, buildingHeight]; 

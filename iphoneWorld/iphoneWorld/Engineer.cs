@@ -9,10 +9,8 @@ namespace iphoneWorld.iphoneWorld
     {
 
         /*having a list of phones might not be necessary, just for simulation purpose */
-        //private IList<Itestable> _listOfIphone;
         private int _numOfPhonesLeft;
         private Itestable _IphoneBeingTested;
-        private int _IphoneBeingTestedIndex;
         private int _highestBrokenFloor;
         private int _currentFloor;
         private int _numOfFloorsBelowThisSubBuilding;
@@ -21,15 +19,16 @@ namespace iphoneWorld.iphoneWorld
         private IalgoGeneratable _DPalgo;
         private Ibuilding _building;
 
-        public Engineer( IalgoGeneratable DPAlgoG)
+        public Engineer( IalgoGeneratable DPAlgoG, int numOfPhones, Itestable Phone)
         {
             _currentFloor = 0;
             _numOfFloorsBelowThisSubBuilding = 0;
-
             _lastPhoneBroke = false;
-
             _DPalgo = DPAlgoG;
             _DPTable = _DPalgo.generateDPTable();
+            Phone.carriedBy(this);
+            _IphoneBeingTested = Phone;
+            this._numOfPhonesLeft = numOfPhones;
 
         }
 
@@ -43,7 +42,6 @@ namespace iphoneWorld.iphoneWorld
         {
             Phone.carriedBy(this);
             _IphoneBeingTested = Phone;
-            _IphoneBeingTestedIndex = 0;
             this._numOfPhonesLeft = numOfPhones;
         }
 
@@ -68,13 +66,8 @@ namespace iphoneWorld.iphoneWorld
             else
                 heightOfThisSubBuilding = _highestBrokenFloor - 1 - _currentFloor;
 
-            //int nextBestFloorInSubBuilding = _DPTable.accessTable(numOfPhonesLeftNow, heightOfThisSubBuilding);
             int nextBestFloorInSubBuilding = _DPTable.accessTable(this._numOfPhonesLeft, heightOfThisSubBuilding);
             _currentFloor = _numOfFloorsBelowThisSubBuilding + nextBestFloorInSubBuilding;
-            //for (int i = 0; i <= _listOfIphone.Count - 1; i++)
-            //{
-            //    _listOfIphone[i].updateCurrentFloor();
-            //}
             this._IphoneBeingTested.updateCurrentFloor();
             Console.WriteLine("Engineer moved to floor " + _currentFloor);
 
@@ -91,11 +84,9 @@ namespace iphoneWorld.iphoneWorld
                 {   
                     Console.WriteLine("One Iphone broke at floor " + _currentFloor);
                     _lastPhoneBroke = true;
-                    _IphoneBeingTestedIndex++;
                     _highestBrokenFloor = _currentFloor;
                     if (_highestBrokenFloor == _numOfFloorsBelowThisSubBuilding + 1)
                         return;
-                    //_IphoneBeingTested = _listOfIphone[_IphoneBeingTestedIndex];
                     this._numOfPhonesLeft--;
 
                 }

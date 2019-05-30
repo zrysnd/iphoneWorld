@@ -10,7 +10,7 @@ namespace iphoneWorld.iphoneWorld.UnitTests
     {
         private int _BuildingHeightDefault = 1000;
         private int _IPhoneBreakingFloorDefault = 500;
-        private int _NumOfPhonesDefault = 3;
+        private int _NumOfPhonesDefault = 100;
 
         protected override void SetInstallers()
         {
@@ -37,8 +37,6 @@ namespace iphoneWorld.iphoneWorld.UnitTests
         DPAlgorithmGenerator _dpAlgo;
         [Inject]
         IalgoGeneratable _AlgoToBeInjectedToEngineer;
-        [Inject]
-        IList<Itestable> _listOfPhones;
 
         int numOfPhone = 3;
   
