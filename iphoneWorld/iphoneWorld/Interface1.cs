@@ -6,7 +6,11 @@ using System.Threading.Tasks;
 
 namespace iphoneWorld.iphoneWorld
 {
-
+    public interface ITwoDIntArray
+    {
+        int AccessElement(int i, int j);
+        void SetElement(int i, int j, int newValue);
+    }
 
     public interface Icarriable
     {
