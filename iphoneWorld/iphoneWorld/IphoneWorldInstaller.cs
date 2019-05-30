@@ -20,16 +20,17 @@ namespace iphoneWorld.iphoneWorld
             ContainerBindInterfaceTo<Iphone, Iphone>(true);
             ContainerBindInterfaceTo<Tester, Engineer>(false);
 
-            //ContainerBindInterfaceTo<ITwoDIntArray, TwoDArray>(false);
-            //Container.Bind<int[]>().To<int[]>().AsTransient().WhenInjectedInto<TwoDArray>();
-            //Container.Bind<int>().FromInstance((_NumOfPhones + 1) * (_BuildingHeight+1));
-            Container.Bind<ITwoDIntArray>().FromInstance(new TwoDArray(new int[(_NumOfPhones + 1) * (_BuildingHeight + 1)] , _NumOfPhones+1));
+            ContainerBindInterfaceTo<ITwoDIntArray, TwoDArray>(false);
+            Container.Bind<int[]>().To<int[]>().AsTransient().WhenInjectedInto<TwoDArray>();
+            Container.Bind<int>().FromInstance((_NumOfPhones + 1)).WhenInjectedInto<TwoDArray>();
+            Container.Bind<int>().FromInstance((_NumOfPhones + 1) * (_BuildingHeight + 1)).WhenInjectedInto<int[]>();
+
+            //Container.Bind<ITwoDIntArray>().FromInstance(new TwoDArray(new int[(_NumOfPhones + 1) * (_BuildingHeight + 1)] , _NumOfPhones+1));
 
 
-            Container.Bind<int[]>().FromInstance(new int[_BuildingHeight+1]);
+
 
             Container.Bind<int[,]>().FromInstance(new int[ _NumOfPhones + 1, _BuildingHeight + 1]).AsTransient();
-
 
             Container.Bind<int>().FromInstance(_IPhoneBreakingFloor).WhenInjectedInto<Iphone>();
             Container.Bind<int>().FromInstance(_BuildingHeight).WhenInjectedInto<Building>();
