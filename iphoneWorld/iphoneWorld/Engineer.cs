@@ -8,35 +8,36 @@ namespace iphoneWorld.iphoneWorld
     public class Engineer :  Tester, IfloorTellable
     {
 
-        /*having a list of phones might not be necessary, just for simulation purpose */
         private int _numOfPhonesLeft; //your engineer is doing too much, violation of [s]olid
         private Itestable _IphoneBeingTested;
-        private int _highestBrokenFloor;
         private int _currentFloor;
-        private int _numOfFloorsBelowThisSubBuilding;
-        private bool _lastPhoneBroke;
         private ItableAccessable _DPTable;
         private IalgoGeneratable _DPalgo;
         private Ibuilding _building;
+        private Irecordable _testRecord;
 
-        public Engineer( IalgoGeneratable DPAlgoG, int numOfPhones, Itestable Phone)
+
+
+        public Engineer( IalgoGeneratable DPAlgoG, int numOfPhones, Itestable Phone, Irecordable testRecord)
         {
             _currentFloor = 0;
-            _numOfFloorsBelowThisSubBuilding = 0;
-            _lastPhoneBroke = false;
             _DPalgo = DPAlgoG;
             _DPTable = _DPalgo.generateDPTable();
             Phone.carriedBy(this);
             _IphoneBeingTested = Phone;
             this._numOfPhonesLeft = numOfPhones;
+            _testRecord = testRecord;
+
 
         }
 
         public void GoToBuilding(Ibuilding building)
         {
             _building = building;
-            _highestBrokenFloor = building.getHeight() + 1;
+            this._testRecord.HighestBrokenFloor = building.getHeight()+1;
+
         }
+
 
         public void PickUpPhones( int numOfPhones, Itestable Phone)
         {
@@ -59,15 +60,14 @@ namespace iphoneWorld.iphoneWorld
 
         public void moveToNextBestFloor()
         {
-            //int numOfPhonesLeftNow = _listOfIphone.Count - _IphoneBeingTestedIndex;
             int heightOfThisSubBuilding;
-            if (_lastPhoneBroke)
-                heightOfThisSubBuilding = _currentFloor - 1 - _numOfFloorsBelowThisSubBuilding;
+            if(_testRecord.LastPhoneBroken)
+                heightOfThisSubBuilding = _currentFloor - 1 - _testRecord.NumOfFloorsBelowThisSubBuilding;
             else
-                heightOfThisSubBuilding = _highestBrokenFloor - 1 - _currentFloor;
+                heightOfThisSubBuilding = _testRecord.HighestBrokenFloor - 1 - _currentFloor;
 
             int nextBestFloorInSubBuilding = _DPTable.accessTable(this._numOfPhonesLeft, heightOfThisSubBuilding);
-            _currentFloor = _numOfFloorsBelowThisSubBuilding + nextBestFloorInSubBuilding;
+            _currentFloor = _testRecord.NumOfFloorsBelowThisSubBuilding + nextBestFloorInSubBuilding;
             this._IphoneBeingTested.updateCurrentFloor();
             Console.WriteLine("Engineer moved to floor " + _currentFloor);
 
@@ -83,18 +83,18 @@ namespace iphoneWorld.iphoneWorld
                 if (PhoneBroken)
                 {   
                     Console.WriteLine("One Iphone broke at floor " + _currentFloor);
-                    _lastPhoneBroke = true;
-                    _highestBrokenFloor = _currentFloor;
-                    if (_highestBrokenFloor == _numOfFloorsBelowThisSubBuilding + 1)
+                    _testRecord.LastPhoneBroken = true;
+                    _testRecord.HighestBrokenFloor = _currentFloor;
+                    if (_testRecord.HighestBrokenFloor == _testRecord.NumOfFloorsBelowThisSubBuilding + 1)
                         return;
                     this._numOfPhonesLeft--;
 
                 }
                 else
                 {
-                    _lastPhoneBroke = false;
+                    _testRecord.LastPhoneBroken = false;
                     Console.WriteLine("Iphone didn't break at floor " + _currentFloor);
-                    _numOfFloorsBelowThisSubBuilding = _currentFloor;
+                    _testRecord.NumOfFloorsBelowThisSubBuilding = _currentFloor;
                 }
 
 
@@ -102,15 +102,15 @@ namespace iphoneWorld.iphoneWorld
 
         public int test()
         {
-            while(_highestBrokenFloor != _numOfFloorsBelowThisSubBuilding + 1)
+            while(_testRecord.HighestBrokenFloor != _testRecord. NumOfFloorsBelowThisSubBuilding + 1)
             {
                 testOnePhone();
                 Console.WriteLine();
             }
-            Console.WriteLine("breaking floor is: " + _numOfFloorsBelowThisSubBuilding);
+            Console.WriteLine("breaking floor is: " + _testRecord.NumOfFloorsBelowThisSubBuilding);
             Console.WriteLine("_______________________________");
             Console.WriteLine();
-            return _numOfFloorsBelowThisSubBuilding;
+            return _testRecord.NumOfFloorsBelowThisSubBuilding;
         }
 
 

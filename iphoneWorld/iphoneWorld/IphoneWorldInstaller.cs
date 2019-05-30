@@ -19,6 +19,7 @@ namespace iphoneWorld.iphoneWorld
             ContainerBindInterfaceTo<Itestable, Iphone>(false);
             ContainerBindInterfaceTo<Iphone, Iphone>(true);
             ContainerBindInterfaceTo<Tester, Engineer>(false);
+            ContainerBindInterfaceTo<Irecordable, TestRecords>(false);
 
             ContainerBindInterfaceTo<ITwoDIntArray, TwoDArray>(false);
             Container.Bind<int[]>().To<int[]>().AsTransient().WhenInjectedInto<TwoDArray>();

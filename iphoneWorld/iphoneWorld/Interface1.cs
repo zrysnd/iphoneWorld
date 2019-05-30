@@ -24,6 +24,14 @@ namespace iphoneWorld.iphoneWorld
         bool getTested();
     }
 
+    public interface Irecordable
+    {
+        int HighestBrokenFloor { get; set; }
+        int NumOfFloorsBelowThisSubBuilding { get; set; }
+        bool LastPhoneBroken { get; set; }
+
+    }
+
 
     public interface IfloorTellable
     {

@@ -1,13 +1,12 @@
 ﻿<Properties StartupConfiguration="{39C76857-4CAD-45F6-BA7F-CD044B99EFC7}|Default">
   <MonoDevelop.Ide.ItemProperties.iphoneWorld PreferredExecutionTarget="MonoDevelop.Default" />
-  <MonoDevelop.Ide.Workbench ActiveDocument="iphoneWorld/iphoneWorld/DPTable.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="iphoneWorld/iphoneWorld/IphoneWorldInstaller.cs">
     <Files>
-      <File FileName="iphoneWorld/iphoneWorld/Interface1.cs" Line="39" Column="5" />
-      <File FileName="iphoneWorld/iphoneWorld/Engineer.cs" Line="118" Column="6" />
-      <File FileName="iphoneWorld/iphoneWorld/UnitTests/IphoneWorldTestClass.cs" Line="40" Column="17" />
-      <File FileName="iphoneWorld/iphoneWorld/IphoneWorldInstaller.cs" Line="28" Column="145" />
-      <File FileName="iphoneWorld/iphoneWorld/DPAlgorithmGenerator.cs" Line="87" Column="1" />
-      <File FileName="iphoneWorld/iphoneWorld/DPTable.cs" Line="19" Column="10" />
+      <File FileName="iphoneWorld/iphoneWorld/Interface1.cs" Line="23" Column="42" />
+      <File FileName="iphoneWorld/iphoneWorld/TestRecords.cs" Line="16" Column="1" />
+      <File FileName="iphoneWorld/iphoneWorld/Engineer.cs" Line="26" Column="45" />
+      <File FileName="iphoneWorld/iphoneWorld/IphoneWorldInstaller.cs" Line="59" Column="1" />
+      <File FileName="iphoneWorld/iphoneWorld/Iphone.cs" Line="8" Column="1" />
     </Files>
     <Pads>
       <Pad Id="ProjectPad">
@@ -17,7 +16,7 @@
               <Node name="References" expanded="True" />
               <Node name="iphoneWorld" expanded="True">
                 <Node name="UnitTests" expanded="True" />
-                <Node name="DPTable.cs" selected="True" />
+                <Node name="IphoneWorldInstaller.cs" selected="True" />
               </Node>
             </Node>
           </Node>

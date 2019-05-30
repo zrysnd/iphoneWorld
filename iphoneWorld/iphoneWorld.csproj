@@ -55,6 +55,7 @@
     <Compile Include="iphoneWorld\UnitTests\UnitTestBase.cs" />
     <Compile Include="iphoneWorld\IphoneWorldInstaller.cs" />
     <Compile Include="iphoneWorld\TwoDArray.cs" />
+    <Compile Include="iphoneWorld\TestRecords.cs" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="iphoneWorld\" />
