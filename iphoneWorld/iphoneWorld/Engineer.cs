@@ -9,7 +9,7 @@ namespace iphoneWorld.iphoneWorld
     {
 
         /*having a list of phones might not be necessary, just for simulation purpose */
-        private int _numOfPhonesLeft;
+        private int _numOfPhonesLeft; //your engineer is doing too much, violation of [s]olid
         private Itestable _IphoneBeingTested;
         private int _highestBrokenFloor;
         private int _currentFloor;
