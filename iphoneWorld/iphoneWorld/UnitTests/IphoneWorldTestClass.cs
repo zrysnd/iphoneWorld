@@ -10,7 +10,7 @@ namespace iphoneWorld.iphoneWorld.UnitTests
     {
         private int _BuildingHeightDefault = 1000;
         private int _IPhoneBreakingFloorDefault = 500;
-        private int _NumOfPhonesDefault = 3;
+        private int _NumOfPhonesDefault = 100;
 
         protected override void SetInstallers()
         {
@@ -104,7 +104,8 @@ namespace iphoneWorld.iphoneWorld.UnitTests
         {
 
             //List<Itestable> listOfPhones = new List<Itestable>();
-            for(int i = 0; i <= numOfPhone - 1; i++)
+            numOfPhone = 100;
+            for (int i = 0; i <= numOfPhone - 1; i++)
             {
                 _listOfPhones.Add(iPhoneToBeTested);
             }
