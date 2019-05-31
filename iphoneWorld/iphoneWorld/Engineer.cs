@@ -11,10 +11,12 @@ namespace iphoneWorld.iphoneWorld
         //your engineer is doing too much, violation of [s]olid
 
         private IgroupOfTestable _IphonesBeingTested;
-        private int _currentFloor;
-        private ItableAccessable _DPTable;
-        private IalgoGeneratable _DPalgo;
+        private int _currentFloor; //usually we put dependencies together , then var together. 
+        private ItableAccessable _DPTable; //does the "Accessable" have meaning ? do/will you have nonAccessable?
+        private IalgoGeneratable _DPalgo; 
         private Irecordable _testRecord;
+        // much more [S]
+
 
 
 
@@ -22,7 +24,7 @@ namespace iphoneWorld.iphoneWorld
         {
             _currentFloor = 0;
             _DPalgo = DPAlgoG;
-            _DPTable = _DPalgo.generateDPTable();
+            _DPTable = _DPalgo.generateDPTable(); 
 
             _testRecord = testRecord;
 
@@ -37,12 +39,12 @@ namespace iphoneWorld.iphoneWorld
 
         public void PickUpPhones(IgroupOfTestable Phones)
         {
-            Phones.carriedBy(this);
-            _IphonesBeingTested = Phones;
+            Phones.carriedBy(this);//will it be picked up by not this?
+            _IphonesBeingTested = Phones; //this looks like an Inject
         }
 
 
-        public int getCurrentFloor() 
+        public int getCurrentFloor() //convert to property
         { 
             return _currentFloor; 
         }
