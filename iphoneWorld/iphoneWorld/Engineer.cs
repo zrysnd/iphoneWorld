@@ -13,19 +13,24 @@ namespace iphoneWorld.iphoneWorld
         private IgroupOfTestable _IphonesBeingTested;
         private int _currentFloor;
         private ItableAccessable _DPTable;
-        private IalgoGeneratable _DPalgo;
         private Irecordable _testRecord;
 
 
 
-        public Engineer( IalgoGeneratable DPAlgoG, Irecordable testRecord)
+        public Engineer( )
         {
             _currentFloor = 0;
-            _DPalgo = DPAlgoG;
-            _DPTable = _DPalgo.generateDPTable();
 
-            _testRecord = testRecord;
+        }
 
+        public void PrepareTestRecord(Irecordable record)
+        {
+            _testRecord = record;
+        }
+
+        public void PrepareDpTable(IalgoGeneratable DPAlgoG)
+        {
+            _DPTable = DPAlgoG.generateDPTable();
         }
 
         public void GoToBuilding(Ibuilding building)
@@ -108,7 +113,6 @@ namespace iphoneWorld.iphoneWorld
             Console.WriteLine();
             return _testRecord.NumOfFloorsBelowThisSubBuilding;
         }
-
 
 
     }

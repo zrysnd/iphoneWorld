@@ -35,7 +35,8 @@ namespace iphoneWorld.iphoneWorld.UnitTests
         Ibuilding bInjected;
         [Inject]
         DPAlgorithmGenerator _dpAlgo;
-
+        [Inject]
+        Irecordable _Record;
   
         [Test()]
         public void TwoDArrayTestCase()
@@ -102,8 +103,11 @@ namespace iphoneWorld.iphoneWorld.UnitTests
         [Test]
         public void EngineerTestCase()
         {
-            _engineer.GoToBuilding(bInjected);
+
+            _engineer.PrepareTestRecord(_Record);
+            _engineer.PrepareDpTable(_dpAlgo);
             _engineer.PickUpPhones(iPhonesToBeTested);
+            _engineer.GoToBuilding(bInjected);
             Assert.AreEqual(_IPhoneBreakingFloorDefault, _engineer.test());
 
         }

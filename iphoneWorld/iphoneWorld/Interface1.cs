@@ -49,6 +49,8 @@ namespace iphoneWorld.iphoneWorld
     public interface Tester
     {
         int test();
+        void PrepareTestRecord(Irecordable record);
+        void PrepareDpTable(IalgoGeneratable DPAlgoG);
         void GoToBuilding(Ibuilding building);
         void PickUpPhones( IgroupOfTestable Phones);
     }
