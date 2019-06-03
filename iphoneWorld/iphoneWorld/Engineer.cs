@@ -18,10 +18,14 @@ namespace iphoneWorld.iphoneWorld
 
 
 
-        public Engineer( )
+        public Engineer(Irecordable record, IalgoGeneratable DPAlgoG, IgroupOfTestable Phones)
         {
             _currentFloor = 0;
-
+            _DPTable = DPAlgoG.generateDPTable();
+            _testRecord = record;
+            //put these 2 lines in constructor, guessing you prefer this way according to your comments.
+            Phones.carriedBy(this);
+            _IphonesBeingTested = Phones;
         }
 
         public void PrepareTestRecord(Irecordable record)
