@@ -9,10 +9,12 @@ namespace iphoneWorld.iphoneWorld
     {
 
         private IgroupOfTestable _IphonesBeingTested;
-        private ItableAccessable _DPTable;//does the "Accessable" have meaning ? do/will you have nonAccessable? -> accessable means is readonly, can't be changed.(The is also ItableWritable)
+        private ItableAccessable _DPTable; //does the "Accessable" have meaning ? do/will you have nonAccessable? -. accessable means readonly, there is another interface called ITableWrittable.
         private Irecordable _testRecord;
+        // much more [S]
 
-        private int _currentFloor;//usually we put dependencies together , then var together.
+
+        private int _currentFloor;//usually we put dependencies together , then var together. -> separated.
 
 
 
@@ -50,6 +52,8 @@ namespace iphoneWorld.iphoneWorld
         {
             get { return _currentFloor; }
         }
+
+        
 
         public void moveToNextFloor()
         {
