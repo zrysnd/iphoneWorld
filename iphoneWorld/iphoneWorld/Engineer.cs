@@ -7,13 +7,12 @@ namespace iphoneWorld.iphoneWorld
 {
     public class Engineer :  Tester, IfloorTellable
     {
-    
-        //your engineer is doing too much, violation of [s]olid
 
         private IgroupOfTestable _IphonesBeingTested;
-        private int _currentFloor;
-        private ItableAccessable _DPTable;
+        private ItableAccessable _DPTable;//does the "Accessable" have meaning ? do/will you have nonAccessable? -> accessable means is readonly, can't be changed.(The is also ItableWritable)
         private Irecordable _testRecord;
+
+        private int _currentFloor;//usually we put dependencies together , then var together.
 
 
 
@@ -42,14 +41,14 @@ namespace iphoneWorld.iphoneWorld
 
         public void PickUpPhones(IgroupOfTestable Phones)
         {
-            Phones.carriedBy(this);
-            _IphonesBeingTested = Phones;
+            Phones.carriedBy(this);//will it be picked up by not this? -> Phones can be picked up by any IfloorTellable instances(Icarriable interface).
+            _IphonesBeingTested = Phones;//this looks like an Inject -> It is an Inject, you mean I should put this in constructor?
         }
 
 
-        public int getCurrentFloor() 
-        { 
-            return _currentFloor; 
+        public int CurrentFloor  //convert to property -> converted.
+        {
+            get { return _currentFloor; }
         }
 
         public void moveToNextFloor()
