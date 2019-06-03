@@ -39,7 +39,7 @@ namespace iphoneWorld.iphoneWorld
         public void  carriedBy(IfloorTellable carrier)
         {
             _carrier = carrier;
-            _currentFloor = carrier.getCurrentFloor();
+            _currentFloor = carrier.CurrentFloor;
         }
 
         public bool getTested()
@@ -49,7 +49,7 @@ namespace iphoneWorld.iphoneWorld
 
         public void updateCurrentFloor()
         {
-            _currentFloor = _carrier.getCurrentFloor();
+            _currentFloor = _carrier.CurrentFloor;
         }
 
         public int BreakingFloor

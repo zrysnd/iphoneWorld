@@ -7,27 +7,31 @@ namespace iphoneWorld.iphoneWorld
 {
     public class Engineer :  Tester, IfloorTellable
     {
-    
-        //your engineer is doing too much, violation of [s]olid
 
         private IgroupOfTestable _IphonesBeingTested;
-        private int _currentFloor; //usually we put dependencies together , then var together. 
-        private ItableAccessable _DPTable; //does the "Accessable" have meaning ? do/will you have nonAccessable?
-        private IalgoGeneratable _DPalgo; 
+        private ItableAccessable _DPTable; //does the "Accessable" have meaning ? do/will you have nonAccessable? -. accessable means readonly, there is another interface called ITableWrittable.
         private Irecordable _testRecord;
         // much more [S]
 
 
+        private int _currentFloor;//usually we put dependencies together , then var together. -> separated.
 
 
-        public Engineer( IalgoGeneratable DPAlgoG, Irecordable testRecord)
+
+        public Engineer( )
         {
             _currentFloor = 0;
-            _DPalgo = DPAlgoG;
-            _DPTable = _DPalgo.generateDPTable(); 
 
-            _testRecord = testRecord;
+        }
 
+        public void PrepareTestRecord(Irecordable record)
+        {
+            _testRecord = record;
+        }
+
+        public void PrepareDpTable(IalgoGeneratable DPAlgoG)
+        {
+            _DPTable = DPAlgoG.generateDPTable();
         }
 
         public void GoToBuilding(Ibuilding building)
@@ -39,15 +43,17 @@ namespace iphoneWorld.iphoneWorld
 
         public void PickUpPhones(IgroupOfTestable Phones)
         {
-            Phones.carriedBy(this);//will it be picked up by not this?
-            _IphonesBeingTested = Phones; //this looks like an Inject
+            Phones.carriedBy(this);//will it be picked up by not this? -> Phones can be picked up by any IfloorTellable instances(Icarriable interface).
+            _IphonesBeingTested = Phones;//this looks like an Inject -> It is an Inject, you mean I should put this in constructor?
         }
 
 
-        public int getCurrentFloor() //convert to property
-        { 
-            return _currentFloor; 
+        public int CurrentFloor  //convert to property -> converted.
+        {
+            get { return _currentFloor; }
         }
+
+        
 
         public void moveToNextFloor()
         {
@@ -110,7 +116,6 @@ namespace iphoneWorld.iphoneWorld
             Console.WriteLine();
             return _testRecord.NumOfFloorsBelowThisSubBuilding;
         }
-
 
 
     }

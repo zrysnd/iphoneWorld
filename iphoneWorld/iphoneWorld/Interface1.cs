@@ -43,12 +43,13 @@ namespace iphoneWorld.iphoneWorld
 
     public interface IfloorTellable
     {
-        int getCurrentFloor(); //tell floor? use proper english -> changed function name to "getCurrentFloor"
-        /* this interface's pis used to tell iphone objects their current floor number */
+        int CurrentFloor { get; }
     }
     public interface Tester
     {
         int test();
+        void PrepareTestRecord(Irecordable record);
+        void PrepareDpTable(IalgoGeneratable DPAlgoG);
         void GoToBuilding(Ibuilding building);
         void PickUpPhones( IgroupOfTestable Phones);
     }
